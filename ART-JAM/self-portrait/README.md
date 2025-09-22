@@ -1,6 +1,6 @@
-# TITLE OF PROJECT
+# Starlight
 
-AUTHOR NAME
+Chloé Guérin
 
 [View this project online](URL_FOR_THE_RUNNING_PROJECT)
 
