@@ -25,7 +25,10 @@ function draw() {
     //bg color, i know i want blue and something desaturated    
     background(91, 107, 138);
 
+    drawHair()
+    drawNeck()
     drawFace()
+    drawHoodie()
     drawNose()
     drawMouth()
 
@@ -36,3 +39,25 @@ function drawFace() {
     fill(209, 171, 134)
     ellipse(300, 300, 200, 250)
 }
+
+//alright challenge:try to make the hair in less than an hour
+function drawHair() {
+    noStroke()
+    fill(0)
+    ellipse(300, 300, 250, 300)
+}
+
+//ok i'm not gonna lie, i'm following a p5 tuto for that one, i'll credit in read me. also is the no stroke necessary?
+function drawHoodie() {
+    rectMode(CENTER)
+    fill(0)
+    rect(300, 550, 300, 200)
+}
+
+//neck i need a win. eeeeh i'll take it. nostroke is not necessary! is the order of things important? i guess for style and understanding but rn i'm feeling chaotic. i'll clean up later. also editing these is gonna be a bitch, but at least it's fun!
+function drawNeck() {
+    rectMode(CENTER)
+    fill(209, 171, 134)
+    rect(300, 450, 80, 90)
+}
+
