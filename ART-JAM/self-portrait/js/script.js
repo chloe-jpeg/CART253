@@ -29,6 +29,7 @@ function draw() {
     drawNeck()
     drawEars()
     drawFace()
+    drawPiercings()
     drawBangs()
     drawHoodie()
     drawNose()
@@ -73,10 +74,12 @@ function drawHair() {
 //second try at bangs, have a genius idea
 function drawBangs() {
     rectMode(CENTER)
+    noStroke()
     fill('#2b1e1c')
     rect(300, 220, 230, 100, 450)
 
     //trying my first triangle, wish me luck!
+    noStroke()
     fill(209, 171, 134)
     triangle(300, 220, 280, 280, 320, 280)
 }
@@ -86,6 +89,7 @@ function drawBangs() {
 //ok i'm not gonna lie, i'm following a p5 tuto for that one, i'll credit in read me. also is the no stroke necessary? (worked on  the hair and now my rectangle is gone??)((function draw bangs got the rect back??))
 function drawHoodie() {
     rectMode(CENTER)
+    noStroke()
     fill(0)
     rect(300, 550, 300, 200, 60)
 }
@@ -107,11 +111,6 @@ function drawEars() {
     //ok that worked now left ear!
     fill(209, 171, 134)
     ellipse(385, 310, 70)
-
-    //earrings?right? idk
-    noStroke()
-    fill(255)
-    ellipse(215, 310, 20)
 }
 
 //nose time! if i feel fancy, i'll try adding a septum
@@ -119,4 +118,22 @@ function drawNose() {
     noStroke()
     fill('#d59163ff')
     triangle(300, 325, 315, 360, 285, 360)
+}
+
+function drawPiercings() {
+
+    //earrings?right? why is this not working?? ok its fine now
+    fill('#af9125ff')
+    ellipse(200, 335, 8)
+
+    fill('#af9125ff')
+    ellipse(400, 335, 8)
+
+    stroke('#878783ff')
+    strokeWeight(3)
+    line(194, 328, 190, 335)
+
+    stroke('#878783ff')
+    strokeWeight(3)
+    line(405, 328, 410, 335)
 }
