@@ -87,7 +87,7 @@ function drawBangs() {
 function drawHoodie() {
     rectMode(CENTER)
     fill(0)
-    rect(300, 550, 300, 200)
+    rect(300, 550, 300, 200, 60)
 }
 
 //neck i need a win. eeeeh i'll take it. nostroke is not necessary! is the order of things important? i guess for style and understanding but rn i'm feeling chaotic. i'll clean up later. also editing these is gonna be a bitch, but at least it's fun now!
@@ -107,4 +107,16 @@ function drawEars() {
     //ok that worked now left ear!
     fill(209, 171, 134)
     ellipse(385, 310, 70)
+
+    //earrings?right? idk
+    noStroke()
+    fill(255)
+    ellipse(215, 310, 20)
+}
+
+//nose time! if i feel fancy, i'll try adding a septum
+function drawNose() {
+    noStroke()
+    fill('#d59163ff')
+    triangle(300, 325, 315, 360, 285, 360)
 }
