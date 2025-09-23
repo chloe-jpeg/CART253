@@ -45,14 +45,22 @@ function drawFace() {
 //alright challenge:try to make the hair in less than an hour(i was doing something sooo complicated for nothing)
 function drawHair() {
     rectMode(CENTER)
-    fill(0)
+    noStroke()
+    fill('#2b1e1c')
     rect(300, 315, 235, 305, 80)
 
+    //might delete this, the blond part of my hair... 
+    rectMode(CENTER)
+    noStroke()
+    fill('#c2bfa1ff')
+    rect(300, 370, 235, 180, 65)
 
-    //space buns! 
-    fill(0)
+    //space buns!
+    noStroke()
+    fill('#2b1e1c')
     ellipse(220, 190, 100)
-    fill(0)
+    noStroke()
+    fill('#2b1e1c')
     ellipse(380, 190, 100)
 }
 
@@ -63,6 +71,15 @@ function drawHair() {
 //}
 
 //second try at bangs, have a genius idea
+function drawBangs() {
+    rectMode(CENTER)
+    fill('#2b1e1c')
+    rect(300, 220, 230, 100, 450)
+
+    //trying my first triangle, wish me luck!
+    fill(209, 171, 134)
+    triangle(300, 220, 280, 280, 320, 280)
+}
 
 
 
