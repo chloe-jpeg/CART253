@@ -36,6 +36,7 @@ function draw() {
     drawMouth()
 
 }
+
 //is this what i'm supposed to do? apparently not. update 2! check your spelling and maybe next time you won't spend 30 min trying to make an 'ellispe' appear.
 function drawFace() {
     noStroke()
@@ -47,7 +48,7 @@ function drawFace() {
 function drawHair() {
     rectMode(CENTER)
     noStroke()
-    fill('#2b1e1c')
+    fill('#452f2bff')
     rect(300, 315, 235, 305, 80)
 
     //might delete this, the blond part of my hair... 
@@ -58,10 +59,10 @@ function drawHair() {
 
     //space buns!
     noStroke()
-    fill('#2b1e1c')
+    fill('#452f2bff')
     ellipse(220, 190, 100)
     noStroke()
-    fill('#2b1e1c')
+    fill('#452f2bff')
     ellipse(380, 190, 100)
 }
 
@@ -75,7 +76,7 @@ function drawHair() {
 function drawBangs() {
     rectMode(CENTER)
     noStroke()
-    fill('#2b1e1c')
+    fill('#452f2bff')
     rect(300, 220, 230, 100, 450)
 
     //trying my first triangle, wish me luck!
@@ -83,8 +84,6 @@ function drawBangs() {
     fill(209, 171, 134)
     triangle(300, 220, 280, 280, 320, 280)
 }
-
-
 
 //ok i'm not gonna lie, i'm following a p5 tuto for that one, i'll credit in read me. also is the no stroke necessary? (worked on  the hair and now my rectangle is gone??)((function draw bangs got the rect back??))
 function drawHoodie() {
@@ -102,8 +101,8 @@ function drawNeck() {
     rect(300, 450, 80, 90)
 }
 
+//ears to listen to La Femme, my favorite band of the moment 
 function drawEars() {
-
     //right ear or so i'm trying
     fill(209, 171, 134)
     ellipse(215, 310, 70)
@@ -120,20 +119,40 @@ function drawNose() {
     triangle(300, 325, 315, 360, 285, 360)
 }
 
+//earrings?right? why is this not working?? ok its fine now
 function drawPiercings() {
-
-    //earrings?right? why is this not working?? ok its fine now
+    //right gold
     fill('#af9125ff')
     ellipse(200, 335, 8)
 
+    //left gold
     fill('#af9125ff')
     ellipse(400, 335, 8)
 
+    //right silver
     stroke('#878783ff')
     strokeWeight(3)
     line(194, 328, 190, 335)
 
+    //left silver
     stroke('#878783ff')
     strokeWeight(3)
     line(405, 328, 410, 335)
+
+    //septum
+    stroke('#878783ff')
+    strokeWeight(3)
+    noFill()
+    ellipse(300, 360, 13)
+}
+
+//mouth is for eating 
+function drawMouth() {
+    noStroke()
+    fill('#c15f49ff')
+    ellipse(300, 392, 35, 17)
+
+    noStroke()
+    fill(209, 171, 134)
+    rect(300, 398, 36, 15)
 }
