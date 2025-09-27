@@ -10,7 +10,7 @@
 "use strict";
 
 /**
- * this is my function setup, i know i need it to create my canvas by what else?
+ * this is my function setup, i know i need it to create my canvas but what else?
 */
 function setup() {
     createCanvas(600, 600);
@@ -24,6 +24,7 @@ function setup() {
 function draw() {
     //bg color, i know i want blue and something desaturated    
     background(91, 107, 138);
+    //background('#c9622bff');
 
     drawHair()
     drawNeck()
@@ -34,6 +35,8 @@ function draw() {
     drawHoodie()
     drawNose()
     drawMouth()
+    drawGlow()
+    drawStar(100, 100)
 
 }
 
@@ -87,14 +90,35 @@ function drawBangs() {
 
 //ok i'm not gonna lie, i'm following a p5 tuto for that one, i'll credit in read me. also is the no stroke necessary? (worked on  the hair and now my rectangle is gone??)((function draw bangs got the rect back??))
 function drawHoodie() {
+    //body of the hoodie
     rectMode(CENTER)
     noStroke()
-    fill(0)
+    fill('#2b5284ff')
     rect(300, 550, 300, 200, 60)
+    //front parts of the hood
+    noStroke()
+    fill('#386197ff')
+    triangle(215, 430, 200, 460, 310, 450)
+    triangle(390, 430, 405, 460, 290, 450)
+    //strings of the hood
+    noStroke()
+    fill('#878783ff')
+    ellipse(270, 450, 8)
+    ellipse(330, 450, 8)
+    stroke(255)
+    strokeWeight(4)
+    line(270, 451, 270, 500)
+    line(330, 451, 330, 500)
+
 }
 
 //neck i need a win. eeeeh i'll take it. nostroke is not necessary! is the order of things important? i guess for style and understanding but rn i'm feeling chaotic. i'll clean up later. also editing these is gonna be a bitch, but at least it's fun now!
 function drawNeck() {
+    //back part of the hood, has to be behind the neck
+    noStroke()
+    fill('#2b5284ff')
+    triangle(215, 430, 390, 430, 300, 500)
+    //neck part
     rectMode(CENTER)
     noStroke()
     fill(209, 171, 134)
@@ -150,9 +174,19 @@ function drawPiercings() {
 function drawMouth() {
     noStroke()
     fill('#c15f49ff')
-    ellipse(300, 392, 35, 17)
+    ellipse(300, 391, 35, 17)
 
     noStroke()
     fill(209, 171, 134)
-    rect(300, 398, 36, 15)
+    rect(300, 397, 36, 15)
+}
+
+
+//okay i'm trying something. ok idk what i'm doing i'll fix it later
+function drawStar(x, y) {
+    const starImg = new Image();
+    starImg.src = '/assets/images/star.png';
+    starImg.onload = function () {
+        ctx.drawImage(starImg, x, y);
+    };
 }
