@@ -13,12 +13,13 @@
 //random necessary stuff
 var a = 0;
 
-let bottomImg, topImg;
+let bottomImg, topImg, bgImg;
 
 function preload() {
 
     bottomImg = loadImage('/assets/images/glow_real.png') //glow image
     topImg = loadImage('/assets/images/star_real.png') //star image
+    bgImg = loadImage('/assets/images/normandie_lena.png')
 }
 
 
@@ -33,8 +34,10 @@ function setup() {
 function draw() {
 
     //bg color, i know i want blue and something desaturated. or orange. or sea.  
-    background('#5B6B8A');
+    //background('#5B6B8A');
     //background('#c9622bff');
+    image(bgImg, 300, 300, 600, 600) //oof thats pretty good
+
 
     //glow work
     imageMode(CENTER)
