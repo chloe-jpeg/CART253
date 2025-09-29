@@ -9,9 +9,11 @@
 
 "use strict";
 
+
 /**
  * this is my function setup, i know i need it to create my canvas but what else?
 */
+
 function setup() {
     createCanvas(600, 600);
 
@@ -26,6 +28,9 @@ function draw() {
     background(91, 107, 138);
     //background('#c9622bff');
 
+
+    image(bottomImg, 0, 0, 600, 600)
+
     drawHair()
     drawNeck()
     drawEars()
@@ -35,9 +40,17 @@ function draw() {
     drawHoodie()
     drawNose()
     drawMouth()
-    drawGlow()
-    drawStar(100, 100)
 
+    image(topImg, 195, 205, 210, 210)
+}
+
+
+let bottomImg, topImg;
+
+function preload() {
+
+    bottomImg = loadImage('/assets/images/glow_real.png')
+    topImg = loadImage('/assets/images/star_real.png')
 }
 
 //is this what i'm supposed to do? apparently not. update 2! check your spelling and maybe next time you won't spend 30 min trying to make an 'ellispe' appear.
@@ -69,11 +82,6 @@ function drawHair() {
     ellipse(380, 190, 100)
 }
 
-//jumping all over the place but hair is annoying so bangs!
-//function drawBangs() {
-// fill(255)
-// arc(width / 2.5, height / 3, 140, 140, .90, 180);
-//}
 
 //second try at bangs, have a genius idea
 function drawBangs() {
@@ -181,12 +189,3 @@ function drawMouth() {
     rect(300, 397, 36, 15)
 }
 
-
-//okay i'm trying something. ok idk what i'm doing i'll fix it later
-function drawStar(x, y) {
-    const starImg = new Image();
-    starImg.src = '/assets/images/star.png';
-    starImg.onload = function () {
-        ctx.drawImage(starImg, x, y);
-    };
-}
