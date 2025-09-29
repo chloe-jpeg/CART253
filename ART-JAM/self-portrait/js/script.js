@@ -120,7 +120,7 @@ function drawHoodie() {
 
 }
 
-//neck i need a win. eeeeh i'll take it. nostroke is not necessary! is the order of things important? i guess for style and understanding but rn i'm feeling chaotic. i'll clean up later. also editing these is gonna be a bitch, but at least it's fun now!
+//neck i need a win. eeeeh i'll take it. nostroke is not necessary! (lie) is the order of things important? i guess for style and understanding but rn i'm feeling chaotic. i'll clean up later. also editing these is gonna be a bitch, but at least it's fun now!
 function drawNeck() {
     //back part of the hood, has to be behind the neck
     noStroke()
