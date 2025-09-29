@@ -42,9 +42,9 @@ function draw() {
     drawNose()
     drawMouth()
 
-    // push()
+   // push()
     //translate(width / 1, height / 1)
-    // rotate(frameCount * 0.01)
+   // rotate(frameCount * 0.01)
     image(topImg, 300, 300, 210, 210)
     //pop()
 }
