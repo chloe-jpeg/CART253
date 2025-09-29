@@ -16,6 +16,7 @@
 
 function setup() {
     createCanvas(600, 600);
+    imageMode(CENTER)
 
 }
 
@@ -29,7 +30,7 @@ function draw() {
     //background('#c9622bff');
 
 
-    image(bottomImg, 0, 0, 600, 600)
+    image(bottomImg, 300, 300, 600, 600)
 
     drawHair()
     drawNeck()
@@ -41,7 +42,11 @@ function draw() {
     drawNose()
     drawMouth()
 
-    image(topImg, 195, 205, 210, 210)
+    // push()
+    //translate(width / 1, height / 1)
+    // rotate(frameCount * 0.01)
+    image(topImg, 300, 300, 210, 210)
+    //pop()
 }
 
 
