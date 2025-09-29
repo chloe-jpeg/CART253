@@ -2,8 +2,7 @@
  * Starlight
  * Chloé Guérin
  * 
- * This is a self portrait of, well, me! i haven't fully decided what i want to do yet (lie, i just need to see if i can actually make it-update a weel later! can i do it????)
- * lets see if i come back to fill this or forget!
+ * This is a self portrait of, well, me! I like blue, stars and the sea
  * 
  */
 
@@ -11,36 +10,37 @@
 
 
 /**function preload for image!! this took me 2 days to figure out, so pls appreciate it. */
+//random necessary stuff
 var a = 0;
 
 let bottomImg, topImg;
 
 function preload() {
 
-    bottomImg = loadImage('/assets/images/glow_real.png')
-    topImg = loadImage('/assets/images/star_real.png')
+    bottomImg = loadImage('/assets/images/glow_real.png') //glow image
+    topImg = loadImage('/assets/images/star_real.png') //star image
 }
 
-/**
- * this is my function setup for canvas!
-*/
 
+/**this is my function setup for canvas!*/
 function setup() {
+
     createCanvas(600, 600);
 }
 
 
-/**
- * my function draw, for background and draw organisation 
-*/
+/** my function draw, for background, draw organization and image work */
 function draw() {
-    //bg color, i know i want blue and something desaturated. or orange.   
-    background(91, 107, 138);
+
+    //bg color, i know i want blue and something desaturated. or orange. or sea.  
+    background('#5B6B8A');
     //background('#c9622bff');
 
+    //glow work
     imageMode(CENTER)
     image(bottomImg, 300, 300, 600, 600)
 
+    //all my function draw elements
     drawHair()
     drawNeck()
     drawEars()
@@ -51,7 +51,7 @@ function draw() {
     drawNose()
     drawMouth()
 
-    //hahaha i'm going crazy!
+    //star rotation work, drove me crazy
     translate(300, 300)
     imageMode(CENTER)
     //rotate(a)
@@ -61,22 +61,15 @@ function draw() {
 }
 
 
-
-//is this what i'm supposed to do? apparently not. update 2! check your spelling and maybe next time you won't spend 30 min trying to make an 'ellispe' appear.
-function drawFace() {
-    noStroke()
-    fill(209, 171, 134)
-    ellipse(300, 300, 200, 250)
-}
-
 //alright challenge:try to make the hair in less than an hour(i was doing something sooo complicated for nothing)
 function drawHair() {
+    //brown back part of my hair. figured out how to round the corners.
     rectMode(CENTER)
     noStroke()
     fill('#452f2bff')
     rect(300, 315, 235, 305, 80)
 
-    //might delete this, the blond part of my hair... 
+    //might delete this, the blond part of my hair - officially keeping this.
     rectMode(CENTER)
     noStroke()
     fill('#c2bfa1ff')
@@ -85,80 +78,47 @@ function drawHair() {
     //space buns!
     noStroke()
     fill('#452f2bff')
-    ellipse(220, 190, 100)
+    ellipse(220, 190, 100) //right one
     noStroke()
     fill('#452f2bff')
-    ellipse(380, 190, 100)
+    ellipse(380, 190, 100) //left one
 }
 
 
-//second try at bangs, have a genius idea
-function drawBangs() {
-    rectMode(CENTER)
-    noStroke()
-    fill('#452f2bff')
-    rect(300, 220, 230, 100, 450)
-
-    //trying my first triangle, wish me luck!
-    noStroke()
-    fill(209, 171, 134)
-    triangle(300, 220, 280, 280, 320, 280)
-}
-
-//ok i'm not gonna lie, i'm following a p5 tuto for that one, i'll credit in read me. also is the no stroke necessary? (worked on  the hair and now my rectangle is gone??)((function draw bangs got the rect back??))
-function drawHoodie() {
-    //body of the hoodie
-    rectMode(CENTER)
-    noStroke()
-    fill('#2b5284ff')
-    rect(300, 550, 300, 200, 60)
-    //front parts of the hood
-    noStroke()
-    fill('#386197ff')
-    triangle(215, 430, 200, 460, 310, 450)
-    triangle(390, 430, 405, 460, 290, 450)
-    //strings of the hood
-    noStroke()
-    fill('#878783ff')
-    ellipse(270, 450, 8)
-    ellipse(330, 450, 8)
-    stroke(255)
-    strokeWeight(4)
-    line(270, 451, 270, 500)
-    line(330, 451, 330, 500)
-
-}
-
-//neck i need a win. eeeeh i'll take it. nostroke is not necessary! (lie) is the order of things important? i guess for style and understanding but rn i'm feeling chaotic. i'll clean up later. also editing these is gonna be a bitch, but at least it's fun now!
+//neck i need a win. eeeeh i'll take it. nostroke is not necessary! (lie) is the order of things important? i guess for style and understanding but rn i'm feeling chaotic. cleanup time!
 function drawNeck() {
     //back part of the hood, has to be behind the neck
     noStroke()
     fill('#2b5284ff')
     triangle(215, 430, 390, 430, 300, 500)
+
     //neck part
     rectMode(CENTER)
     noStroke()
-    fill(209, 171, 134)
+    fill('#D1AB86')
     rect(300, 450, 80, 90)
 }
+
 
 //ears to listen to La Femme, my favorite band of the moment 
 function drawEars() {
     //right ear or so i'm trying
-    fill(209, 171, 134)
+    fill('#D1AB86')
     ellipse(215, 310, 70)
 
     //ok that worked now left ear!
-    fill(209, 171, 134)
+    fill('#D1AB86')
     ellipse(385, 310, 70)
 }
 
-//nose time! if i feel fancy, i'll try adding a septum
-function drawNose() {
+
+//is this what i'm supposed to do? apparently not. update 2! check your spelling and maybe next time you won't spend 30 min trying to make an 'ellispe' appear.
+function drawFace() {
     noStroke()
-    fill('#d59163ff')
-    triangle(300, 325, 315, 360, 285, 360)
+    fill('#D1AB86')
+    ellipse(300, 300, 200, 250)
 }
+
 
 //earrings?right? why is this not working?? ok its fine now
 function drawPiercings() {
@@ -187,6 +147,55 @@ function drawPiercings() {
     ellipse(300, 360, 13)
 }
 
+
+//second try at bangs, have a genius idea
+function drawBangs() {
+    rectMode(CENTER)
+    noStroke()
+    fill('#452f2bff')
+    rect(300, 220, 230, 100, 450)
+
+    //trying my first triangle, wish me luck!
+    noStroke()
+    fill('#D1AB86')
+    triangle(300, 220, 280, 280, 320, 280)
+}
+
+//ok i'm not gonna lie, i'm following a p5 tuto for that one, i'll credit in read me. also is the no stroke necessary? answer unconclusive, sometimes yes?
+function drawHoodie() {
+    //body of the hoodie
+    rectMode(CENTER)
+    noStroke()
+    fill('#2b5284ff')
+    rect(300, 550, 300, 200, 60)
+
+    //front parts of the hood
+    noStroke()
+    fill('#386197ff')
+    triangle(215, 430, 200, 460, 310, 450)
+    triangle(390, 430, 405, 460, 290, 450)
+
+    //strings of the hood
+    noStroke()
+    fill('#878783ff')
+    ellipse(270, 450, 8)
+    ellipse(330, 450, 8)
+    stroke(255)
+    strokeWeight(4)
+    line(270, 451, 270, 500)
+    line(330, 451, 330, 500)
+
+}
+
+
+//nose time! if i feel fancy, i'll try adding a septum
+function drawNose() {
+    noStroke()
+    fill('#d59163ff')
+    triangle(300, 325, 315, 360, 285, 360)
+}
+
+
 //mouth is for eating 
 function drawMouth() {
     noStroke()
@@ -194,7 +203,7 @@ function drawMouth() {
     ellipse(300, 391, 35, 17)
 
     noStroke()
-    fill(209, 171, 134)
+    fill('#D1AB86')
     rect(300, 397, 36, 15)
 }
 
