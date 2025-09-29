@@ -1,8 +1,8 @@
 /**
- * Satrlight
+ * Starlight
  * Chloé Guérin
  * 
- * This is a self portrait of, well, me! i haven't fully decided what i want to do yet (lie, i just need to see if i can actually make it)
+ * This is a self portrait of, well, me! i haven't fully decided what i want to do yet (lie, i just need to see if i can actually make it-update a weel later! can i do it????)
  * lets see if i come back to fill this or forget!
  * 
  */
@@ -10,14 +10,23 @@
 "use strict";
 
 
+/**function preload for image!! this took me 2 days to figure out, so pls appreciate it. */
+var a = 0;
+
+let bottomImg, topImg;
+
+function preload() {
+
+    bottomImg = loadImage('/assets/images/glow_real.png')
+    topImg = loadImage('/assets/images/star_real.png')
+}
+
 /**
- * this is my function setup, i know i need it to create my canvas but what else?
+ * this is my function setup for canvas!
 */
 
 function setup() {
     createCanvas(600, 600);
-    imageMode(CENTER)
-
 }
 
 
@@ -25,11 +34,11 @@ function setup() {
  * my function draw, for background and draw organisation 
 */
 function draw() {
-    //bg color, i know i want blue and something desaturated    
+    //bg color, i know i want blue and something desaturated. or orange.   
     background(91, 107, 138);
     //background('#c9622bff');
 
-
+    imageMode(CENTER)
     image(bottomImg, 300, 300, 600, 600)
 
     drawHair()
@@ -42,21 +51,16 @@ function draw() {
     drawNose()
     drawMouth()
 
-   // push()
-    //translate(width / 1, height / 1)
-   // rotate(frameCount * 0.01)
-    image(topImg, 300, 300, 210, 210)
-    //pop()
+    //hahaha i'm going crazy!
+    translate(300, 300)
+    imageMode(CENTER)
+    //rotate(a)
+    image(topImg, 0, 0, 210, 210)
+    a = a + 0.02
+
 }
 
 
-let bottomImg, topImg;
-
-function preload() {
-
-    bottomImg = loadImage('/assets/images/glow_real.png')
-    topImg = loadImage('/assets/images/star_real.png')
-}
 
 //is this what i'm supposed to do? apparently not. update 2! check your spelling and maybe next time you won't spend 30 min trying to make an 'ellispe' appear.
 function drawFace() {
