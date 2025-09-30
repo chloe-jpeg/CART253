@@ -14,11 +14,9 @@ Chloé Guérin
 
 > When you click the mouse, a song starts. Click it again and it stops.
 
-## Screenshot(s)
+## Screenshot
 
-This bit should have some images of the program running so that the reader has a sense of what it looks like. For example:
-
-> ![Image of a clown face](./assets/images/clown.png)
+> ![Image of a me!](./assets/images/Screenshot_self-portrait.png)
 
 ## Attribution
 
@@ -26,6 +24,7 @@ This bit should have some images of the program running so that the reader has a
     >Here are the specific content i've used
         >hoodie: (https://editor.p5js.org/fenfenrita/sketches/ryXtDYXu7)
         >turn: (https://editor.p5js.org/cgu/sketches/xR8GBr-Hf)
+        >new function mousePressed: (https://p5js.org/reference/p5/mousePressed/)
 
 > - The music is Roi - Videoclub, a loop of the instrumental part of the song, youtube link is (https://www.youtube.com/watch?v=Mcqmb0p_tbs&list=RDMcqmb0p_tbs&start_radio=1)
 

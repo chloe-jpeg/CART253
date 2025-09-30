@@ -2,7 +2,7 @@
  * Starlight
  * Chloé Guérin
  * 
- * This is a self portrait of, well, me! I like blue, stars and the sea
+ * This is a self portrait of, well, me! I like blue, stars and the sea. Cool music, animation and a bit of mouse interaction.
  * 
  */
 
@@ -12,7 +12,6 @@
 /**function preload for image!! this took me 2 days to figure out, so pls appreciate it. now with audio!*/
 //random necessary stuff
 var a = 0;
-var value = 0
 var opacity = 0
 
 let bottomImg, topImg, bgImg;
@@ -64,11 +63,12 @@ function draw() {
     //star rotation work, drove me crazy
     translate(300, 300)
     imageMode(CENTER)
-    //rotate(a)
+    noTint()
+    rotate(a)
     image(topImg, 0, 0, 230, 230)
     a = a + 0.02
-
 }
+
 
 //can't believe that worked
 //sound with mouse! roi-Videoclub (i really like 'mai' from them too)
@@ -80,14 +80,13 @@ function mousePressed() {
     }
 }
 
-//ok i'm not sure i really understand this 
+
+//ok now i'm good, opacity play with the glow!
 function mouseMoved() {
-    if (mouseX > 150 && mouseX <= 200 && mouseY > 150 && mouseY < 250) {
-        opacity = map(mouseX, 150, 200, 0, 255)
-    } else if (mouseX >= 200 && mouseX < 250 && mouseY > 150 && mouseY < 250) {
-        opacity = map(mouseX, 200, 250, 255, 0)
+    if (mouseX <= 300) {
+        opacity = map(mouseX, 0, 300, 0, 255)
     } else {
-        opacity = 0
+        opacity = map(mouseX, 300, 600, 255, 0)
     }
     return false
 }
