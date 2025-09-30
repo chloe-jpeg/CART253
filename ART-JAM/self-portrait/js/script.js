@@ -9,17 +9,21 @@
 "use strict";
 
 
-/**function preload for image!! this took me 2 days to figure out, so pls appreciate it. */
+/**function preload for image!! this took me 2 days to figure out, so pls appreciate it. now with audio!(?)*/
 //random necessary stuff
 var a = 0;
 
 let bottomImg, topImg, bgImg;
+
+let mySound;
 
 function preload() {
 
     bottomImg = loadImage('/assets/images/glow_real.png') //glow image
     topImg = loadImage('/assets/images/star_real.png') //star image
     bgImg = loadImage('/assets/images/normandie_lena.png')
+
+    mySound = loadSound('/assets/sounds/videoclub_roi.mp3')
 }
 
 
@@ -58,11 +62,19 @@ function draw() {
     translate(300, 300)
     imageMode(CENTER)
     //rotate(a)
-    image(topImg, 0, 0, 210, 210)
+    image(topImg, 0, 0, 230, 230)
     a = a + 0.02
 
 }
 
+//can't believe that worked
+function mousePressed() {
+    if (mySound.isPlaying()) {
+        mySound.stop()
+    } else {
+        mySound.loop()
+    }
+}
 
 //alright challenge:try to make the hair in less than an hour(i was doing something sooo complicated for nothing)
 function drawHair() {
