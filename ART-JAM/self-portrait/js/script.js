@@ -9,9 +9,11 @@
 "use strict";
 
 
-/**function preload for image!! this took me 2 days to figure out, so pls appreciate it. now with audio!(?)*/
+/**function preload for image!! this took me 2 days to figure out, so pls appreciate it. now with audio!*/
 //random necessary stuff
 var a = 0;
+var value = 0
+var opacity = 0
 
 let bottomImg, topImg, bgImg;
 
@@ -21,9 +23,9 @@ function preload() {
 
     bottomImg = loadImage('/assets/images/glow_real.png') //glow image
     topImg = loadImage('/assets/images/star_real.png') //star image
-    bgImg = loadImage('/assets/images/normandie_lena.png')
+    bgImg = loadImage('/assets/images/normandie_lena.png')//bg sea
 
-    mySound = loadSound('/assets/sounds/videoclub_roi.mp3')
+    mySound = loadSound('/assets/sounds/videoclub_roi.mp3')//song
 }
 
 
@@ -44,6 +46,7 @@ function draw() {
 
 
     //glow work
+    tint(255, opacity)
     imageMode(CENTER)
     image(bottomImg, 300, 300, 600, 600)
 
@@ -68,6 +71,7 @@ function draw() {
 }
 
 //can't believe that worked
+//sound with mouse! roi-Videoclub (i really like 'mai' from them too)
 function mousePressed() {
     if (mySound.isPlaying()) {
         mySound.stop()
@@ -75,6 +79,19 @@ function mousePressed() {
         mySound.loop()
     }
 }
+
+//ok i'm not sure i really understand this 
+function mouseMoved() {
+    if (mouseX > 150 && mouseX <= 200 && mouseY > 150 && mouseY < 250) {
+        opacity = map(mouseX, 150, 200, 0, 255)
+    } else if (mouseX >= 200 && mouseX < 250 && mouseY > 150 && mouseY < 250) {
+        opacity = map(mouseX, 200, 250, 255, 0)
+    } else {
+        opacity = 0
+    }
+    return false
+}
+
 
 //alright challenge:try to make the hair in less than an hour(i was doing something sooo complicated for nothing)
 function drawHair() {
@@ -175,6 +192,7 @@ function drawBangs() {
     fill('#D1AB86')
     triangle(300, 220, 280, 280, 320, 280)
 }
+
 
 //ok i'm not gonna lie, i'm following a p5 tuto for that one, i'll credit in read me. also is the no stroke necessary? answer unconclusive, sometimes yes?
 function drawHoodie() {
