@@ -34,7 +34,4 @@ Chloé Guérin
 
 ## License
 
-This bit should include the license you want to apply to your work. For example:
-
-> yeah i don't know about that one
 > This project is licensed under a Creative Commons Attribution ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.en)) license with the exception of libraries and other components with their own licenses.

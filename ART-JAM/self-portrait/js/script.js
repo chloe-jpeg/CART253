@@ -4,6 +4,10 @@
  * 
  * This is a self portrait of, well, me! I like blue, stars and the sea. Cool music, animation and a bit of mouse interaction.
  * 
+ * Controls:
+ * -press the mouse to on/off the music
+ * -move the mouse around to play with the glow
+ * 
  */
 
 "use strict";
