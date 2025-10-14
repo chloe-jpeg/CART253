@@ -24,11 +24,11 @@ let mySound;
 
 function preload() {
 
-    bottomImg = loadImage('/assets/images/glow_real.png') //glow image
-    topImg = loadImage('/assets/images/star_real.png') //star image
-    bgImg = loadImage('/assets/images/normandie_lena.png')//bg sea
+    bottomImg = loadImage('./assets/images/glow_real.png') //glow image
+    topImg = loadImage('./assets/images/star_real.png') //star image
+    bgImg = loadImage('./assets/images/normandie_lena.png')//bg sea
 
-    mySound = loadSound('/assets/sounds/videoclub_roi.mp3')//song
+    mySound = loadSound('./assets/sounds/videoclub_roi.mp3')//song
 }
 
 
