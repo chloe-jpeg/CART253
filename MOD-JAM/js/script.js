@@ -32,12 +32,6 @@ const frog = {
         // Determines how the tongue moves each frame
         state: "idle" // State can be: idle, outbound, inbound
     }
-    // eyes: {
-    //     leftX: 320,
-    //     rightX: 320,
-    //     y: 450,
-    //     size: 20
-    // }
 };
 
 // Our fly
@@ -47,12 +41,6 @@ const fly = {
     y: 200, // Will be random
     size: 10,
     speed: 3
-    // wings: {
-    //     x: undefined,
-    //     y: undefined,
-    //     sizeX: 10,
-    //     sizeY: 5,
-    // }
 };
 
 /**
@@ -96,16 +84,15 @@ function moveFly() {
 function drawFly() {
     push();
     noStroke();
+    fill("#ffffffff")
+    ellipse(fly.x - 3, fly.y - 5, fly.size / 2);
     fill("#000000");
     ellipse(fly.x, fly.y, fly.size);
+    fill("#ffffffff")
+    ellipse(fly.x + 1, fly.y - 6, fly.size / 2);
     pop();
 
-    // push()
-    // noStroke()
-    // fill(255)
-    // alpha(50)
-    // ellipse(fly.wings.x, fly.wings.y, fly.wings.sizeX, fly.wings.sizeY)
-    // pop()
+
 }
 
 /**
@@ -176,13 +163,32 @@ function drawFrog() {
     ellipse(frog.body.x, frog.body.y, frog.body.size);
     pop();
 
-    // //eyes
-    // push()
-    // noStroke()
-    // fill("#ffffffff")
-    // ellipse(frog.eyes.leftX, frog.eyes.y, frog.eyes.size)
-    // ellipse(frog.eyes.rightX, frog.eyes.y, frog.eyes.size)
-    // pop()
+    //eyes try 2
+    push()
+    fill("#ffffffff")
+    noStroke()
+    ellipse(frog.body.x - 45, frog.body.y - 65, frog.body.size / 4)
+    pop()
+
+    push()
+    fill("#ffffffff")
+    noStroke()
+    ellipse(frog.body.x + 45, frog.body.y - 65, frog.body.size / 4)
+    pop()
+
+    //pupils
+    push()
+    fill("#000000ff")
+    noStroke()
+    ellipse(frog.body.x - 45, frog.body.y - 65, frog.body.size / 6)
+    pop()
+
+    push()
+    fill("#000000ff")
+    noStroke()
+    ellipse(frog.body.x + 45, frog.body.y - 65, frog.body.size / 6)
+    pop()
+
 }
 
 /**
