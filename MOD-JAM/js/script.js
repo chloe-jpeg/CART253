@@ -15,6 +15,9 @@
 
 "use strict";
 
+let mySound;
+
+
 // Our frog
 const frog = {
     // The frog's body has a position and size
@@ -43,6 +46,12 @@ const fly = {
     speed: 3
 };
 
+//addind sounds & images
+function preload() {
+    mySound = loadSound('./assets/sounds/nature-sounds.mp3')
+
+}
+
 /**
  * Creates the canvas and initializes the fly
  */
@@ -65,6 +74,17 @@ function draw() {
     drawElements();
 }
 
+//sounds, just a placeholder for now
+function mousePressed() {
+    if (mySound.isPlaying()) {
+        mySound.stop()
+    } else {
+        mySound.loop()
+    }
+}
+
+
+
 /**
  * Moves the fly according to its speed
  * Resets the fly if it gets all the way to the right
@@ -76,6 +96,13 @@ function moveFly() {
     if (fly.x > width) {
         resetFly();
     }
+
+    // // Move the fly
+    // fly.y += fly.speed;
+    // // Handle the fly going off the canvas
+    // if (fly.x > width) {
+    //     resetFly();
+    // }
 }
 
 /**
