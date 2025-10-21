@@ -32,6 +32,12 @@ const frog = {
         // Determines how the tongue moves each frame
         state: "idle" // State can be: idle, outbound, inbound
     }
+    // eyes: {
+    //     leftX: 320,
+    //     rightX: 320,
+    //     y: 450,
+    //     size: 20
+    // }
 };
 
 // Our fly
@@ -41,6 +47,12 @@ const fly = {
     y: 200, // Will be random
     size: 10,
     speed: 3
+    // wings: {
+    //     x: undefined,
+    //     y: undefined,
+    //     sizeX: 10,
+    //     sizeY: 5,
+    // }
 };
 
 /**
@@ -55,12 +67,14 @@ function setup() {
 
 function draw() {
     background("#87ceeb");
+
     moveFly();
     drawFly();
     moveFrog();
     moveTongue();
     drawFrog();
     checkTongueFlyOverlap();
+    drawElements();
 }
 
 /**
@@ -85,6 +99,13 @@ function drawFly() {
     fill("#000000");
     ellipse(fly.x, fly.y, fly.size);
     pop();
+
+    // push()
+    // noStroke()
+    // fill(255)
+    // alpha(50)
+    // ellipse(fly.wings.x, fly.wings.y, fly.wings.sizeX, fly.wings.sizeY)
+    // pop()
 }
 
 /**
@@ -136,24 +157,32 @@ function moveTongue() {
 function drawFrog() {
     // Draw the tongue tip
     push();
-    fill("#ff0000");
+    fill("#e42243ff");
     noStroke();
     ellipse(frog.tongue.x, frog.tongue.y, frog.tongue.size);
     pop();
 
     // Draw the rest of the tongue
     push();
-    stroke("#ff0000");
+    stroke("#e42243ff");
     strokeWeight(frog.tongue.size);
     line(frog.tongue.x, frog.tongue.y, frog.body.x, frog.body.y);
     pop();
 
     // Draw the frog's body
     push();
-    fill("#00ff00");
+    fill("#1b5d2bff");
     noStroke();
     ellipse(frog.body.x, frog.body.y, frog.body.size);
     pop();
+
+    // //eyes
+    // push()
+    // noStroke()
+    // fill("#ffffffff")
+    // ellipse(frog.eyes.leftX, frog.eyes.y, frog.eyes.size)
+    // ellipse(frog.eyes.rightX, frog.eyes.y, frog.eyes.size)
+    // pop()
 }
 
 /**
@@ -179,4 +208,40 @@ function mousePressed() {
     if (frog.tongue.state === "idle") {
         frog.tongue.state = "outbound";
     }
+}
+
+
+//draw some bg elements just to add something 
+function drawElements() {
+    //quenouille
+
+    line(50, 380, 50, 500)
+    strokeWeight(5)
+    stroke("#14381fff")
+
+    push()
+    noStroke()
+    fill("#6c4720ff")
+    rect(44, 375, 12, 25, 60)
+    pop()
+
+    line(70, 370, 70, 500)
+    strokeWeight(5)
+    stroke("#14381fff")
+
+    push()
+    noStroke()
+    fill("#6c4720ff")
+    rect(64, 365, 12, 25, 60)
+    pop()
+
+    line(600, 375, 600, 500)
+    strokeWeight(5)
+    stroke("#14381fff")
+
+    push()
+    noStroke()
+    fill("#6c4720ff")
+    rect(594, 370, 12, 25, 60)
+    pop()
 }
