@@ -15,7 +15,8 @@
 
 "use strict";
 
-let mySound;
+// let mySound;
+let titleImg
 
 
 // Our frog
@@ -46,10 +47,11 @@ const fly = {
     speed: 3
 };
 
-//addind sounds & images
+// //addind sounds & images
 function preload() {
-    mySound = loadSound('./assets/sounds/nature-sounds.mp3')
 
+    // mySound = loadSound('./assets/sounds/nature-sounds.mp3')
+    titleImg = loadImage('./assets/images/title-frog.png')
 }
 
 /**
@@ -72,16 +74,21 @@ function draw() {
     drawFrog();
     checkTongueFlyOverlap();
     drawElements();
+    // drawStartscreen()
+
+    imageMode(CENTER)
+    image(titleImg, 320, 170.5, 380, 180)
+
 }
 
-//sounds, just a placeholder for now
-function mousePressed() {
-    if (mySound.isPlaying()) {
-        mySound.stop()
-    } else {
-        mySound.loop()
-    }
-}
+// //sound, just a placeholder for now
+// function mousePressed() {
+//     if (mySound.isPlaying()) {
+//         mySound.stop()
+//     } else {
+//         mySound.loop()
+//     }
+// }
 
 
 
@@ -277,4 +284,54 @@ function drawElements() {
     fill("#6c4720ff")
     rect(594, 370, 12, 25, 60)
     pop()
+
+    line(50, 380, 50, 500)
+    strokeWeight(5)
+    stroke("#14381fff")
+
+    push()
+    noStroke()
+    fill("#6c4720ff")
+    rect(44, 375, 12, 25, 60)
+    pop()
 }
+
+
+
+// function drawStartscreen() {
+
+//     push()
+//     rectMode(CENTER)
+//     stroke('#185511ff')
+//     strokeWeight(10)
+//     noFill()
+//     rect(320, 170, 400, 200, 50)
+//     pop()
+
+
+//     push()
+//     rectMode(CENTER)
+//     stroke('#28781fff')
+//     strokeWeight(10)
+//     noFill()
+//     rect(320, 170, 381, 180, 40)
+//     pop()
+
+//     //trying some text, what is going on with the font????? ok i'm good now
+//     textAlign(CENTER)
+//     textFont("Courier /new")
+//     textSize(18)
+//     fill('#185511ff')
+//     strokeWeight(0);
+//     text('PRESS SPACEBAR TO PLAY', 320, 220)
+
+//     textAlign(CENTER)
+//     textFont("Courier New")
+//     textSize(15)
+//     fill('#185511ff')
+//     strokeWeight(0);
+//     text('You are hungry...', 320, 310)
+//     text('Click and move to mouse to eat flies', 320, 340)
+//     text('The Bog is also hungry...', 320, 380)
+//     text('Let too many pass and Die.', 320, 410)
+// }
