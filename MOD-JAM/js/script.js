@@ -17,6 +17,7 @@
 
 // let mySound;
 let titleImg
+let grassImg
 
 
 // Our frog
@@ -40,11 +41,19 @@ const frog = {
 
 // Our fly
 // Has a position, size, and speed of horizontal movement
+//trying something
 const fly = {
     x: 0,
+    x: 640,
     y: 200, // Will be random
     size: 10,
     speed: 3
+
+    //the try
+    // x: 640,
+    // y: 200, // Will be random
+    // size: 10,
+    // speed: 3
 };
 
 // //addind sounds & images
@@ -52,6 +61,7 @@ function preload() {
 
     // mySound = loadSound('./assets/sounds/nature-sounds.mp3')
     titleImg = loadImage('./assets/images/title-frog.png')
+    grassImg = loadImage('./assets/images/quenouille-frog.png')
 }
 
 /**
@@ -74,10 +84,13 @@ function draw() {
     drawFrog();
     checkTongueFlyOverlap();
     drawElements();
-    // drawStartscreen()
+    drawStartscreen()
 
     imageMode(CENTER)
-    image(titleImg, 320, 170.5, 380, 180)
+    image(titleImg, 320, 170, 380, 180)
+    //to work out
+    imageMode(CENTER)
+    image(grassImg, 320, 170, 370, 170)
 
 }
 
@@ -104,8 +117,8 @@ function moveFly() {
         resetFly();
     }
 
-    // // Move the fly
-    // fly.y += fly.speed;
+    // // Move the fly -> i'm trying to make it also go from right to left
+    // fly.x += fly.speed;
     // // Handle the fly going off the canvas
     // if (fly.x > width) {
     //     resetFly();
@@ -298,40 +311,42 @@ function drawElements() {
 
 
 
-// function drawStartscreen() {
+function drawStartscreen() {
 
-//     push()
-//     rectMode(CENTER)
-//     stroke('#185511ff')
-//     strokeWeight(10)
-//     noFill()
-//     rect(320, 170, 400, 200, 50)
-//     pop()
+    push()
+    rectMode(CENTER)
+    stroke('#185511ff')
+    strokeWeight(10)
+    noFill()
+    rect(320, 170, 400, 200, 50)
+    pop()
 
 
-//     push()
-//     rectMode(CENTER)
-//     stroke('#28781fff')
-//     strokeWeight(10)
-//     noFill()
-//     rect(320, 170, 381, 180, 40)
-//     pop()
+    push()
+    rectMode(CENTER)
+    stroke('#28781fff')
+    strokeWeight(10)
+    noFill()
+    rect(320, 170, 381, 180, 40)
+    pop()
 
-//     //trying some text, what is going on with the font????? ok i'm good now
-//     textAlign(CENTER)
-//     textFont("Courier /new")
-//     textSize(18)
-//     fill('#185511ff')
-//     strokeWeight(0);
-//     text('PRESS SPACEBAR TO PLAY', 320, 220)
+    //trying some text, what is going on with the font????? ok i'm good now
+    textAlign(CENTER)
+    textFont("Courier /new")
+    textSize(18)
+    fill('#185511ff')
+    stroke('#185511ff')
+    strokeWeight(1);
+    text('PRESS SPACEBAR TO PLAY', 320, 220)
 
-//     textAlign(CENTER)
-//     textFont("Courier New")
-//     textSize(15)
-//     fill('#185511ff')
-//     strokeWeight(0);
-//     text('You are hungry...', 320, 310)
-//     text('Click and move to mouse to eat flies', 320, 340)
-//     text('The Bog is also hungry...', 320, 380)
-//     text('Let too many pass and Die.', 320, 410)
-// }
+    textAlign(CENTER)
+    textFont("Courier New")
+    textSize(16)
+    fill('#185511ff')
+    stroke('#185511ff')
+    strokeWeight(1);
+    text('You are hungry...', 320, 310)
+    text('Click and move the mouse to eat flies', 320, 340)
+    text('The Bog is also hungry...', 320, 380)
+    text('Let too many pass and Die.', 320, 410)
+}
