@@ -23,7 +23,6 @@ let grassImg
 let gameState = "start";
 let onMoveForward = true;
 
-
 // Our frog
 const frog = {
     // The frog's body has a position and size
@@ -103,6 +102,7 @@ function draw() {
         drawFrog();
         checkTongueFlyOverlap();
         drawElements();
+        //checkScore();
     }
 
     else if (gameState === "gameOver") {
@@ -135,7 +135,8 @@ function moveFlyForward() {
     fly.x += fly.speed;
     // Handle the fly going off the canvas
     if (fly.x > width) {
-        resetFlyBackward();
+        onMoveForward = random([true, false]);
+        resetFly();
     }
 }
 
@@ -144,7 +145,16 @@ function moveFlyBackward() {
     fly.x -= fly.speed;
     // Handle the fly going off the canvas
     if (fly.x < 0) {
-        resetFlyForward();
+        onMoveForward = random([true, false]);
+        resetFly();
+    }
+}
+
+function resetFly() {
+    if (onMoveForward) {
+        resetFlyForward()
+    } else {
+        resetFlyBackward();
     }
 }
 
@@ -171,13 +181,11 @@ function drawFly() {
 function resetFlyForward() {
     fly.x = 0;
     fly.y = random(0, 300);
-    onMoveForward = true;
 }
 
 function resetFlyBackward() {
     fly.x = 640;
     fly.y = random(0, 300);
-    onMoveForward = false;
 }
 
 
@@ -278,13 +286,9 @@ function checkTongueFlyOverlap() {
     // Check if it's an overlap
     const eaten = (d < frog.tongue.size / 2 + fly.size / 2);
     if (eaten) {
-        if (onMoveForward) {
-            // mon code true
-            resetFlyBackward()
-        } else {
-            // mon code false
-            resetFlyForward()
-        }
+        // score = score + 1
+        onMoveForward = random([true, false]);
+        resetFly();
         // Bring back the tongue
         frog.tongue.state = "inbound";
     }
@@ -399,7 +403,6 @@ function Startscreen() {
 function keyTyped() {
     // Check for the "c" character using key.
     if (keyCode === 32) {
-        console.log("space")
         gameState = "play"
     }
 
