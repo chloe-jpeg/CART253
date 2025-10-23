@@ -1,6 +1,6 @@
 /**
- * Title of Project
- * Author Name
+ * Bog Eater
+ * Chloé Guérin
  * 
  * A game of catching flies with your frog-tongue
  *
@@ -15,14 +15,22 @@
 
 "use strict";
 
+/**
+ * all my let (hopefully)
+ */
+//let for img and sounds
 // let mySound;
 let titleImg
 let grassImg
 
 //4 options, start screen, playing, game over & winner
 let gameState = "start";
+//this one is for the flies
 let onMoveForward = true;
 
+/**
+ * the const section 
+ */
 // Our frog
 const frog = {
     // The frog's body has a position and size
@@ -42,29 +50,23 @@ const frog = {
     }
 };
 
-// Our fly
-// Has a position, size, and speed of horizontal movement
-//trying something
+// Our fly, Has a position, size, and speed of horizontal movement
 const fly = {
     x: 0,
     y: 200, // Will be random
     size: 10,
     speed: 3
-
-    //the try
-    // x: 640,
-    // y: 200, // Will be random
-    // size: 10,
-    // speed: 3
 };
 
-// //addind sounds & images
+
+//addind sounds & images
 function preload() {
 
     // mySound = loadSound('./assets/sounds/nature-sounds.mp3')
     titleImg = loadImage('./assets/images/title-frog.png')
     grassImg = loadImage('./assets/images/quenouille-frog.png')
 }
+
 
 /**
  * Creates the canvas and initializes the fly
@@ -76,16 +78,9 @@ function setup() {
     resetFlyForward();
 }
 
-function moveFly() {
-    if (onMoveForward) {
-        // resetFlyForward();
-        moveFlyForward();
-    } else {
-        // resetFlyBackward();
-        moveFlyBackward();
-    }
-}
-
+/**
+ * funtion draw and my gameState
+ */
 function draw() {
     // yeah i'll be back for you
     background("#87ceeb");
@@ -125,11 +120,22 @@ function draw() {
 // }
 
 
-
 /**
- * Moves the fly according to its speed
- * Resets the fly if it gets all the way to the right
+ * big fly section
  */
+//to make the flies move either from left to right or right to left
+function moveFly() {
+    if (onMoveForward) {
+        // resetFlyForward();
+        moveFlyForward();
+    } else {
+        // resetFlyBackward();
+        moveFlyBackward();
+    }
+}
+
+//Moves the fly according to its speed
+//Resets the fly if it gets all the way to the right
 function moveFlyForward() {
     // Move the fly
     fly.x += fly.speed;
@@ -140,6 +146,7 @@ function moveFlyForward() {
     }
 }
 
+//same as the other one but resets the fly if it gets all the way to the left
 function moveFlyBackward() {
     // Move the fly
     fly.x -= fly.speed;
@@ -150,6 +157,7 @@ function moveFlyBackward() {
     }
 }
 
+//makes sure the reset is random
 function resetFly() {
     if (onMoveForward) {
         resetFlyForward()
@@ -158,9 +166,18 @@ function resetFly() {
     }
 }
 
-/**
- * Draws the fly as a black circle
- */
+// Resets the fly to the left with a random y
+function resetFlyForward() {
+    fly.x = 0;
+    fly.y = random(0, 300);
+}
+// Resets the fly to the right with a random y
+function resetFlyBackward() {
+    fly.x = 640;
+    fly.y = random(0, 300);
+}
+
+//Draws the fly as a black circle and wings!
 function drawFly() {
     push();
     noStroke();
@@ -171,34 +188,18 @@ function drawFly() {
     fill("#ffffffff")
     ellipse(fly.x + 1, fly.y - 6, fly.size / 2);
     pop();
-
-
-}
-
-/**
- * Resets the fly to the left with a random y
- */
-function resetFlyForward() {
-    fly.x = 0;
-    fly.y = random(0, 300);
-}
-
-function resetFlyBackward() {
-    fly.x = 640;
-    fly.y = random(0, 300);
 }
 
 
 /**
- * Moves the frog to the mouse position on x
+ * frog section
  */
+//Moves the frog to the mouse position on x
 function moveFrog() {
     frog.body.x = mouseX;
 }
 
-/**
- * Handles moving the tongue based on its state
- */
+// Handles moving the tongue based on its state
 function moveTongue() {
     // Tongue matches the frog's x
     frog.tongue.x = frog.body.x;
@@ -224,9 +225,7 @@ function moveTongue() {
     }
 }
 
-/**
- * Displays the tongue (tip and line connection) and the frog (body)
- */
+//draw frog, displays the tongue (tip and line connection) and the frog (body)
 function drawFrog() {
     // Draw the tongue tip
     push();
@@ -277,9 +276,7 @@ function drawFrog() {
 
 }
 
-/**
- * Handles the tongue overlapping the fly
- */
+//Handles the tongue overlapping the fly
 function checkTongueFlyOverlap() {
     // Get distance from tongue to fly
     const d = dist(frog.tongue.x, frog.tongue.y, fly.x, fly.y);
@@ -287,6 +284,7 @@ function checkTongueFlyOverlap() {
     const eaten = (d < frog.tongue.size / 2 + fly.size / 2);
     if (eaten) {
         // score = score + 1
+        //random reset when fly is eaten 
         onMoveForward = random([true, false]);
         resetFly();
         // Bring back the tongue
@@ -294,9 +292,7 @@ function checkTongueFlyOverlap() {
     }
 }
 
-/**
- * Launch the tongue on click (if it's not launched yet)
- */
+//Launch the tongue on click (if it's not launched yet)
 function mousePressed() {
     if (frog.tongue.state === "idle") {
         frog.tongue.state = "outbound";
@@ -304,10 +300,11 @@ function mousePressed() {
 }
 
 
-//draw some bg elements just to add something 
+/**
+ * background for the playing part, just to add something
+ */
 function drawElements() {
     //quenouille
-
     line(50, 380, 50, 500)
     strokeWeight(5)
     stroke("#14381fff")
@@ -350,8 +347,11 @@ function drawElements() {
 }
 
 
-
+/**
+ * start of the game part!
+ */
 function Startscreen() {
+    //how it looks
     background('#afed96ff')
 
     imageMode(CENTER)
@@ -385,7 +385,6 @@ function Startscreen() {
     strokeWeight(1);
     text('PRESS SPACEBAR TO PLAY', 320, 220)
 
-
     textAlign(CENTER)
     textFont("Courier New")
     textSize(16)
@@ -396,15 +395,22 @@ function Startscreen() {
     text('Click and move the mouse to eat flies', 320, 340)
     text('The Bog is also hungry...', 320, 380)
     text('Let too many pass and Die.', 320, 410)
-
-
 }
 
+//makes the spacebar start the game
 function keyTyped() {
     // Check for the "c" character using key.
     if (keyCode === 32) {
         gameState = "play"
     }
-
-
 }
+
+
+/**
+ * game over part!
+ */
+
+
+/**
+ * winner part!
+ */
