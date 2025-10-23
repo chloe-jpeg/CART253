@@ -22,13 +22,18 @@
 // let mySound;
 let titleImg
 let grassImg
+let wintxImg
+let losetxtImg
+let wingrassImg
+let losegrassImg
 
 //4 options, start screen, playing, game over & winner
 let gameState = "start";
 //this one is for the flies
 let onMoveForward = true;
-//let for score
-let score = 2;
+//score
+let score = 5;
+//health bar to show score(?) 
 
 /**
  * the const section 
@@ -67,6 +72,10 @@ function preload() {
     // mySound = loadSound('./assets/sounds/nature-sounds.mp3')
     titleImg = loadImage('./assets/images/title-frog.png')
     grassImg = loadImage('./assets/images/quenouille-frog.png')
+    wintxImg = loadImage('./assets/images/winner-frog.png')
+    wingrassImg = loadImage('./assets/images/winner-movie.png')
+    losetxtImg = loadImage('./assets/images/gameover-frog.png')
+    losegrassImg = loadImage('./assets/images/gameover-movie.png')
 }
 
 
@@ -100,6 +109,7 @@ function draw() {
         checkTongueFlyOverlap();
         drawElements();
         checkScore();
+        lineScore();
     }
 
     else if (gameState === "gameOver") {
@@ -112,14 +122,28 @@ function draw() {
 
 }
 
+
+/**
+ * everything to do with the score
+ */
 function checkScore() {
-    if (score === 4) {
+    if (score === 10) {
         gameState = "winning"
     } else if (score === 0) {
         gameState = "gameOver"
     }
 }
 
+function lineScore() {
+    var scoreX = 220 + (score * 20);
+    strokeWeight(8)
+    stroke('white')
+    line(220, 70, 420, 70)
+    strokeWeight(5)
+    stroke("#f87b14ff")
+    line(220, 70, scoreX, 70)
+
+}
 
 
 // //sound, just a placeholder for now
@@ -426,9 +450,6 @@ function keyTyped() {
 function gameOver() {
     background('#185511ff')
 
-    imageMode(CENTER)
-    image(grassImg, 320, 170, 370, 170)
-
     push()
     rectMode(CENTER)
     stroke('#afed96ff')
@@ -462,8 +483,6 @@ function gameOver() {
 function winning() {
     background('#D7F1CD')
 
-    imageMode(CENTER)
-    image(grassImg, 320, 170, 370, 170)
 
     push()
     rectMode(CENTER)
