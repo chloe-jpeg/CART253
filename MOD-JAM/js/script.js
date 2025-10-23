@@ -115,6 +115,8 @@ function draw() {
 function checkScore() {
     if (score === 4) {
         gameState = "winning"
+    } else if (score === 0) {
+        gameState = "gameOver"
     }
 }
 
@@ -151,6 +153,7 @@ function moveFlyForward() {
     fly.x += fly.speed;
     // Handle the fly going off the canvas
     if (fly.x > width) {
+        score = score - 1;
         onMoveForward = random([true, false]);
         resetFly();
     }
@@ -162,6 +165,7 @@ function moveFlyBackward() {
     fly.x -= fly.speed;
     // Handle the fly going off the canvas
     if (fly.x < 0) {
+        score = score - 1;
         onMoveForward = random([true, false]);
         resetFly();
     }
