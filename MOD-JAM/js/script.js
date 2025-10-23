@@ -86,7 +86,7 @@ function draw() {
     background("#87ceeb");
 
     if (gameState === "start") {
-        Startscreen();
+        startscreen();
     }
 
     else if (gameState === "play") {
@@ -350,7 +350,7 @@ function drawElements() {
 /**
  * start of the game part!
  */
-function Startscreen() {
+function startscreen() {
     //how it looks
     background('#afed96ff')
 
@@ -380,16 +380,16 @@ function Startscreen() {
     textAlign(CENTER)
     textFont("Courier /new")
     textSize(18)
-    fill('#185511ff')
-    stroke('#185511ff')
+    fill('#28781fff')
+    stroke('#28781fff')
     strokeWeight(1);
     text('PRESS SPACEBAR TO PLAY', 320, 220)
 
     textAlign(CENTER)
     textFont("Courier New")
     textSize(16)
-    fill('#185511ff')
-    stroke('#185511ff')
+    fill('#28781fff')
+    stroke('#28781fff')
     strokeWeight(1);
     text('You are hungry...', 320, 310)
     text('Click and move the mouse to eat flies', 320, 340)
@@ -409,8 +409,69 @@ function keyTyped() {
 /**
  * game over part!
  */
+function gameOver() {
+    background('#185511ff')
+
+    imageMode(CENTER)
+    image(grassImg, 320, 170, 370, 170)
+
+    push()
+    rectMode(CENTER)
+    stroke('#afed96ff')
+    strokeWeight(10)
+    noFill()
+    rect(320, 170, 400, 200, 50)
+    pop()
+
+    push()
+    rectMode(CENTER)
+    stroke('#D7F1CD')
+    strokeWeight(10)
+    noFill()
+    rect(320, 170, 381, 180, 40)
+    pop()
+
+    textAlign(CENTER)
+    textFont("Courier New")
+    textSize(16)
+    fill('#D7F1CD')
+    stroke('#D7F1CD')
+    strokeWeight(1);
+    text('The Bog ate you', 320, 340)
+}
+
 
 
 /**
  * winner part!
  */
+function winning() {
+    background('#D7F1CD')
+
+    imageMode(CENTER)
+    image(grassImg, 320, 170, 370, 170)
+
+    push()
+    rectMode(CENTER)
+    stroke('#185511ff')
+    strokeWeight(10)
+    noFill()
+    rect(320, 170, 400, 200, 50)
+    pop()
+
+    push()
+    rectMode(CENTER)
+    stroke('#28781fff')
+    strokeWeight(10)
+    noFill()
+    rect(320, 170, 381, 180, 40)
+    pop()
+
+    textAlign(CENTER)
+    textFont("Courier New")
+    textSize(16)
+    fill('#185511ff')
+    stroke('#185511ff')
+    strokeWeight(1);
+    text('You ate the Bog!', 320, 340)
+}
