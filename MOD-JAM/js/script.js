@@ -19,6 +19,10 @@
 let titleImg
 let grassImg
 
+//4 options, start screen, playing, game over & winner
+let gameState = "start";
+let onMoveForward = true;
+
 
 // Our frog
 const frog = {
@@ -44,7 +48,6 @@ const frog = {
 //trying something
 const fly = {
     x: 0,
-    x: 640,
     y: 200, // Will be random
     size: 10,
     speed: 3
@@ -71,26 +74,44 @@ function setup() {
     createCanvas(640, 480);
 
     // Give the fly its first random position
-    resetFly();
+    resetFlyForward();
+}
+
+function moveFly() {
+    if (onMoveForward) {
+        // resetFlyForward();
+        moveFlyForward();
+    } else {
+        // resetFlyBackward();
+        moveFlyBackward();
+    }
 }
 
 function draw() {
+    // yeah i'll be back for you
     background("#87ceeb");
 
-    moveFly();
-    drawFly();
-    moveFrog();
-    moveTongue();
-    drawFrog();
-    checkTongueFlyOverlap();
-    drawElements();
-    drawStartscreen()
+    if (gameState === "start") {
+        Startscreen();
+    }
 
-    imageMode(CENTER)
-    image(titleImg, 320, 170, 380, 180)
-    //to work out
-    imageMode(CENTER)
-    image(grassImg, 320, 170, 370, 170)
+    else if (gameState === "play") {
+        moveFly()
+        drawFly();
+        moveFrog();
+        moveTongue();
+        drawFrog();
+        checkTongueFlyOverlap();
+        drawElements();
+    }
+
+    else if (gameState === "gameOver") {
+        gameOver();
+    }
+
+    else if (gameState === "winning") {
+        winning();
+    }
 
 }
 
@@ -109,20 +130,22 @@ function draw() {
  * Moves the fly according to its speed
  * Resets the fly if it gets all the way to the right
  */
-function moveFly() {
+function moveFlyForward() {
     // Move the fly
     fly.x += fly.speed;
     // Handle the fly going off the canvas
     if (fly.x > width) {
-        resetFly();
+        resetFlyBackward();
     }
+}
 
-    // // Move the fly -> i'm trying to make it also go from right to left
-    // fly.x += fly.speed;
-    // // Handle the fly going off the canvas
-    // if (fly.x > width) {
-    //     resetFly();
-    // }
+function moveFlyBackward() {
+    // Move the fly
+    fly.x -= fly.speed;
+    // Handle the fly going off the canvas
+    if (fly.x < 0) {
+        resetFlyForward();
+    }
 }
 
 /**
@@ -145,10 +168,18 @@ function drawFly() {
 /**
  * Resets the fly to the left with a random y
  */
-function resetFly() {
+function resetFlyForward() {
     fly.x = 0;
     fly.y = random(0, 300);
+    onMoveForward = true;
 }
+
+function resetFlyBackward() {
+    fly.x = 640;
+    fly.y = random(0, 300);
+    onMoveForward = false;
+}
+
 
 /**
  * Moves the frog to the mouse position on x
@@ -247,8 +278,13 @@ function checkTongueFlyOverlap() {
     // Check if it's an overlap
     const eaten = (d < frog.tongue.size / 2 + fly.size / 2);
     if (eaten) {
-        // Reset the fly
-        resetFly();
+        if (onMoveForward) {
+            // mon code true
+            resetFlyBackward()
+        } else {
+            // mon code false
+            resetFlyForward()
+        }
         // Bring back the tongue
         frog.tongue.state = "inbound";
     }
@@ -311,7 +347,14 @@ function drawElements() {
 
 
 
-function drawStartscreen() {
+function Startscreen() {
+    background('#afed96ff')
+
+    imageMode(CENTER)
+    image(titleImg, 320, 170, 380, 180)
+
+    imageMode(CENTER)
+    image(grassImg, 320, 170, 370, 170)
 
     push()
     rectMode(CENTER)
@@ -320,7 +363,6 @@ function drawStartscreen() {
     noFill()
     rect(320, 170, 400, 200, 50)
     pop()
-
 
     push()
     rectMode(CENTER)
@@ -339,6 +381,7 @@ function drawStartscreen() {
     strokeWeight(1);
     text('PRESS SPACEBAR TO PLAY', 320, 220)
 
+
     textAlign(CENTER)
     textFont("Courier New")
     textSize(16)
@@ -349,4 +392,16 @@ function drawStartscreen() {
     text('Click and move the mouse to eat flies', 320, 340)
     text('The Bog is also hungry...', 320, 380)
     text('Let too many pass and Die.', 320, 410)
+
+
+}
+
+function keyTyped() {
+    // Check for the "c" character using key.
+    if (keyCode === 32) {
+        console.log("space")
+        gameState = "play"
+    }
+
+
 }
