@@ -27,6 +27,8 @@ let grassImg
 let gameState = "start";
 //this one is for the flies
 let onMoveForward = true;
+//let for score
+let score = 2;
 
 /**
  * the const section 
@@ -97,7 +99,7 @@ function draw() {
         drawFrog();
         checkTongueFlyOverlap();
         drawElements();
-        //checkScore();
+        checkScore();
     }
 
     else if (gameState === "gameOver") {
@@ -109,6 +111,14 @@ function draw() {
     }
 
 }
+
+function checkScore() {
+    if (score === 4) {
+        gameState = "winning"
+    }
+}
+
+
 
 // //sound, just a placeholder for now
 // function mousePressed() {
@@ -283,7 +293,7 @@ function checkTongueFlyOverlap() {
     // Check if it's an overlap
     const eaten = (d < frog.tongue.size / 2 + fly.size / 2);
     if (eaten) {
-        // score = score + 1
+        score = score + 1
         //random reset when fly is eaten 
         onMoveForward = random([true, false]);
         resetFly();
