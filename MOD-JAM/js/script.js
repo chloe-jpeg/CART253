@@ -19,7 +19,7 @@
  * all my let (hopefully)
  */
 //let for img and sounds
-// let mySound;
+let mySound;
 let titleImg
 let grassImg
 let wintxImg
@@ -69,7 +69,7 @@ const fly = {
 //addind sounds & images
 function preload() {
 
-    // mySound = loadSound('./assets/sounds/nature-sounds.mp3')
+    mySound = loadSound('./assets/sounds/nature-sounds.mp3')
     titleImg = loadImage('./assets/images/title-frog.png')
     grassImg = loadImage('./assets/images/quenouille-frog.png')
     wintxImg = loadImage('./assets/images/winner-frog.png')
@@ -144,16 +144,6 @@ function lineScore() {
     line(220, 70, scoreX, 70)
 
 }
-
-
-// //sound, just a placeholder for now
-// function mousePressed() {
-//     if (mySound.isPlaying()) {
-//         mySound.stop()
-//     } else {
-//         mySound.loop()
-//     }
-// }
 
 
 /**
@@ -440,6 +430,7 @@ function keyTyped() {
     // Check for the "c" character using key.
     if (keyCode === 32) {
         gameState = "play"
+        mySound.loop()
     }
 }
 
@@ -449,6 +440,9 @@ function keyTyped() {
  */
 function gameOver() {
     background('#185511ff')
+
+    imageMode(CENTER)
+    image(losetxtImg, 320, 150, 380, 180)
 
     push()
     rectMode(CENTER)
@@ -466,13 +460,16 @@ function gameOver() {
     rect(320, 170, 381, 180, 40)
     pop()
 
+    imageMode(CENTER, CENTER)
+    image(losegrassImg, 320, 240, 640, 480)
+
     textAlign(CENTER)
     textFont("Courier New")
     textSize(16)
     fill('#D7F1CD')
     stroke('#D7F1CD')
     strokeWeight(1);
-    text('The Bog ate you', 320, 340)
+    text('The Bog ate you', 320, 220)
 }
 
 
@@ -481,8 +478,10 @@ function gameOver() {
  * winner part!
  */
 function winning() {
-    background('#D7F1CD')
+    background('#badeacff')
 
+    imageMode(CENTER)
+    image(wintxImg, 320, 150, 380, 180)
 
     push()
     rectMode(CENTER)
@@ -500,11 +499,16 @@ function winning() {
     rect(320, 170, 381, 180, 40)
     pop()
 
+    imageMode(CENTER)
+    image(wingrassImg, 320, 320, 640, 480)
+    // imageMode(CENTER, CENTER)
+    // image(losegrassImg, 320, 240, 640, 480)
+
     textAlign(CENTER)
     textFont("Courier New")
     textSize(16)
     fill('#185511ff')
     stroke('#185511ff')
     strokeWeight(1);
-    text('You ate the Bog!', 320, 340)
+    text('You ate the Bog!', 320, 220)
 }
