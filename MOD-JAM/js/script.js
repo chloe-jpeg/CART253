@@ -26,14 +26,18 @@ let wintxImg
 let losetxtImg
 let wingrassImg
 let losegrassImg
-
 //4 options, start screen, playing, game over & winner
 let gameState = "start";
 //this one is for the flies
 let onMoveForward = true;
 //score
 let score = 5;
-//health bar to show score(?) 
+//bg work 
+let onGrowing = true
+let speed = 0.02
+let transparency = 0
+let delta = 0
+
 
 /**
  * the const section 
@@ -87,29 +91,45 @@ function setup() {
 
     // Give the fly its first random position
     resetFlyForward();
+
+    background(131, 189, 247)
 }
 
 /**
  * funtion draw and my gameState
  */
 function draw() {
-    // yeah i'll be back for you
-    background("#87ceeb");
+    background(131, 189, 247);
+    delta = speed * deltaTime
 
+    if (onGrowing) {
+        transparency += delta
+    } else {
+        transparency -= delta
+    }
+    if (transparency > 255) {
+        onGrowing = false
+    }
+    if (transparency < 0) {
+        onGrowing = true
+    }
+    createBackGroundRect();
+
+    //game states
     if (gameState === "start") {
         startscreen();
     }
 
     else if (gameState === "play") {
+        drawElements();
+        lineScore();
         moveFly()
         drawFly();
         moveFrog();
         moveTongue();
         drawFrog();
         checkTongueFlyOverlap();
-        drawElements();
         checkScore();
-        lineScore();
     }
 
     else if (gameState === "gameOver") {
@@ -122,6 +142,14 @@ function draw() {
 
 }
 
+//bg rect, thank you Sabine!
+function createBackGroundRect() {
+    push();
+    noStroke();
+    fill(15, 61, 107, transparency);
+    rect(0, 0, width, height);
+    pop();
+}
 
 /**
  * everything to do with the score
@@ -332,11 +360,38 @@ function mousePressed() {
  * background for the playing part, just to add something
  */
 function drawElements() {
+    //tree
+    push()
+    rectMode(CENTER)
+    noStroke()
+    fill("#8b6439ff")
+    rect(600, 300, 80, 450)
+    pop()
+
+    strokeWeight(40)
+    stroke("#8b6439ff")
+    line(480, 70, 600, 220)
+
+    noStroke()
+    fill("#295a38ff")
+    ellipse(480, 70, 120)
+    noStroke()
+    fill("#295a38ff")
+    ellipse(420, 20, 120)
+    noStroke()
+    fill("#295a38ff")
+    ellipse(560, 70, 120)
+    noStroke()
+    fill("#295a38ff")
+    ellipse(640, 90, 120)
+    noStroke()
+    fill("#295a38ff")
+    ellipse(560, 30, 200, 120)
+
     //quenouille
-    line(50, 380, 50, 500)
     strokeWeight(5)
     stroke("#14381fff")
-
+    line(50, 380, 50, 500)
     push()
     noStroke()
     fill("#6c4720ff")
@@ -346,7 +401,6 @@ function drawElements() {
     line(70, 370, 70, 500)
     strokeWeight(5)
     stroke("#14381fff")
-
     push()
     noStroke()
     fill("#6c4720ff")
@@ -356,21 +410,10 @@ function drawElements() {
     line(600, 375, 600, 500)
     strokeWeight(5)
     stroke("#14381fff")
-
     push()
     noStroke()
     fill("#6c4720ff")
     rect(594, 370, 12, 25, 60)
-    pop()
-
-    line(50, 380, 50, 500)
-    strokeWeight(5)
-    stroke("#14381fff")
-
-    push()
-    noStroke()
-    fill("#6c4720ff")
-    rect(44, 375, 12, 25, 60)
     pop()
 }
 
