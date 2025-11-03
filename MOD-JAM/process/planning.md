@@ -10,7 +10,7 @@ The initial idea:
 
 The experience:
 
-> The user controls a frog at the bottom of the screen, they can shoot out the frog's tongue and catch a fly which is moving on the screen. If the tongue hits the fly it gets eaten.
+> The user controls a frog at the bottom of the screen, they can shoot out the frog's tongue and catch a fly which is moving on the screen. If the tongue hits the fly it gets eaten and you gain a bit of health. 
 
 ## Breaking it down
 
@@ -25,18 +25,18 @@ Basic things to do:
 Questions:
 
 - What does the frog look like?
-    - Circles!
+    - Circles! for body and eyes
 - How does the user control the frog?
     - User controls frog with the mouse position, just to the left and right
     - User launches the tongue with a mouse click
 - How does the fly move?
-    - The fly starts on the left at a random y position, and moves to the right in a line
+    - The fly starts on the left at a random y position, and moves to the right in a line, after the first one it can also randomly start on the right
 - What does the tongue look like?
-    - A red line coming out of the frog...
+    - A red line coming out of the frog
 - What happens if the user doesn't catch the fly?
-    - If the fly goes off the right side, it just resets to a new random y on the left
+    - If the fly goes off the right side, it just resets to a new random y on the left and you lose a bit of health
 - What does it all look like on the screen? Layout?
-    - Frog at the bottom, fly moving across, tongue shooting out of frog
+    - Frog at the bottom, fly moving across, tongue shooting out of frog, tree and other swamp stuff
 
 ## The program starts to form....
 

@@ -1,24 +1,29 @@
-# TITLE OF PROJECT
+# BOG EATER
 
-AUTHOR NAME
+Chloé Guérin
 
 [View this project online](URL_FOR_THE_RUNNING_PROJECT)
 
 ## Description
 
-This description should help the reader understand what the program is, anything they should know to be able to experience it (controls, special features, etc.), and what the desired user experience is. For example:
+BOG EATER is a game where you, a frog, is very very hungry. 
 
-> *The Mayor of Clown Town* is a simulator experience that allows the user to control a small town populated entirely by clowns.
+> Press spacebar to start the game, click the mouse to launch your tongue and try to cath as many flies as possible to satiate your hunger. 
 
-> The experience is controlled via the mouse, with left click selecting a clown and bringing up a menu of options such as "slip of banana peel" or "get into impossible capacious clown-car."
+> Your body follows the mouse, and if you miss too many flies you will starve to death and become part of the bog's ecosystem.
 
-> The project is meant to give the user a sense of what it would be the mayor of a town of clowns, eventually getting the sense that clowns are not taking their civic duties seriously.
+> If you wish to test your skills again, Ctrl+R to restart the game.
+
+> This game is meant to give the understanding of eat or be eaten and the brutal battle of survival in the wild.
 
 ## Screenshot(s)
 
-This bit should have some images of the program running so that the reader has a sense of what it looks like. For example:
 
-> ![Image of a clown face](./assets/images/clown.png)
+> ![Image of the start screen](./assets/images/bog_start.png)
+> ![Image of the game playing](./assets/images/bog_play1.png)
+> ![Image of the game playing](./assets/images/bog_play2.png)
+> ![Image of the winning screen](./assets/images/bog_win.png)
+> ![Image of the game over screen](./assets/images/bog_over.png)
 
 ## Attribution
 
@@ -30,6 +35,6 @@ This bit should attribute any code, assets or other elements used taken from oth
 
 ## License
 
-This bit should include the license you want to apply to your work. For example:
-
 > This project is licensed under a Creative Commons Attribution ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.en)) license with the exception of libraries and other components with their own licenses.
+
+> This project was made for a school project for the CART253 class.
