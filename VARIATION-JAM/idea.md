@@ -9,3 +9,6 @@ end screen: oh no! you lost all you sheeps! well better start catching some new 
 3. flock of sheep in the middle of the screen, wolves are coming from both sides and you need to click and drag them bag, if they some close they start eating the sheep, you have to last like 1 min.
 end screen: win the last game = congrats! you are a masterful sheepkeeper, this is your sign to run away in the pasture
 lose the last game = oh no! you lost all you sheeps! well better start catching some new ones! back to the start screen for the first game
+
+
+1. conditional challenge, if the asset moves x, y, change the sprite
