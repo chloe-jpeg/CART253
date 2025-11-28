@@ -1,25 +1,52 @@
-/**
- * Title of Project
- * Author Name
- * 
- * HOW EMBARRASSING! I HAVE NO DESCRIPTION OF MY PROJECT!
- * PLEASE REMOVE A GRADE FROM MY WORK IF IT'S GRADED!
- */
 
 "use strict";
 
-/**
- * OH LOOK I DIDN'T DESCRIBE SETUP!!
-*/
+let state = "menu";
+
+
 function setup() {
     createCanvas(900, 700)
-
 }
 
 
-/**
- * OOPS I DIDN'T DESCRIBE WHAT MY DRAW DOES!
-*/
+
 function draw() {
-    background(0)
+    switch (state) {
+        case "menu":
+            menuDraw();
+            break;
+        case "catch-variation":
+            catchDraw();
+            break
+        case "feed-variation":
+            feedDraw();
+            break;
+        case "protect-variation":
+            protectDraw();
+            break;
+    }
+}
+
+
+function keyPressed(event) {
+    switch (state) {
+        case "menu":
+            menuKeyPressed(event);
+            break;
+        case "catch-variation":
+            catchKeyPressed(event);
+            break
+        case "feed-variation":
+            feedKeyPressed(event);
+            break;
+        case "protect-variation":
+            protectKeyPressed(event);
+            break;
+    }
+}
+
+function KeyPressed(event) {
+    if (event.keyCode === 27) {
+        state = "menu";
+    }
 }
