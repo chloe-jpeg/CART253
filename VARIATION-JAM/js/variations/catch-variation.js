@@ -1,8 +1,11 @@
 
 "use strict";
 
+// let gameState = "play";
 let cbgImg, chillImg, covImg, cwoodImg;
 
+let positionStartSheep = Math.random()
+let score = 0
 
 const user = {
     x: undefined, // will be mouseX
@@ -13,31 +16,43 @@ const user = {
 
 const sheeps = [];
 
-function preload() {
-    cbgImg = loadImage('./assets/images/1_bg.png')
-    chillImg = loadImage('./assets/images/1_hill.png')
-    covImg = loadImage('./assets/images/1_ov.png')
+function catchPreload() {
+    cbgImg = loadImage('./assets/images/1_bg.png');
+    chillImg = loadImage('./assets/images/1_hill.png');
+    covImg = loadImage('./assets/images/1_ov.png');
     cwoodImg = loadImage('./assets/images/1_cl.png')
 }
 
 function catchSetup() {
-
+    background(0)
+    prepareSheeps()
+    catchPreload()
 }
 
-/**
- * This will be called every frame when the red variation is active
- */
+
 function catchDraw() {
+    // background(0)
     imageMode(CENTER, CENTER)
+    console.log(cbgImg)
     image(cbgImg, 450, 350, 900, 700)
+
 
     image(chillImg, 450, 450, 900, 600)
     image(cwoodImg, 450, 350, 900, 700)
     image(covImg, 450, 350, 900, 700)
 
+
+    drawSheep()
+    drawUser()
+    moveUser()
+    moveSheep()
+    checkScore()
+
     strokeWeight(8)
     stroke('white')
     line(350, 700, 550, 700)
+
+
 
 
 }
