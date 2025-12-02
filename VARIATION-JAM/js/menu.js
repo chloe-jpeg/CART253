@@ -29,13 +29,50 @@ function menuDraw() {
     imageMode(CENTER)
     image(shepherdImg, 450, 350, 900, 700)
 
-    push();
-    fill(255);
-    textSize(32);
-    textAlign(CENTER, CENTER);
-    textFont("Courier New")
-    text(menuText, width / 2, height / 2);
-    pop();
+    // push();
+    // fill(255);
+    // textSize(32);
+    // textAlign(CENTER, CENTER);
+    // textFont("Courier New")
+    // text(menuText, width / 2, height / 2);
+    // pop();
+
+    push()
+    noStroke()
+    fill('#477043ff')
+    rect(650, 100, 150, 40, 15)
+    pop()
+
+    push()
+    noStroke()
+    fill('#477043ff')
+    rect(650, 150, 150, 40, 15)
+    pop()
+
+    push()
+    noStroke()
+    fill('#477043ff')
+    rect(650, 200, 150, 40, 15)
+    pop()
+
+    textFont("Courier /new")
+    textSize(20)
+    fill('#c3dfc0ff')
+    noStroke()
+    text('(C) CATCH', 675, 127)
+
+    textFont("Courier /new")
+    textSize(20)
+    fill('#c3dfc0ff')
+    noStroke()
+    text('(F) FEED', 685, 177)
+
+    textFont("Courier /new")
+    textSize(20)
+    fill('#c3dfc0ff')
+    noStroke()
+    text('(P) PROTECT', 668, 227)
+
 }
 
 function menuKeyPressed(event) {

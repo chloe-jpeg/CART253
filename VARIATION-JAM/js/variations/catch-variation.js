@@ -1,13 +1,13 @@
 
 "use strict";
 
-// let gameState = "play";
+// let catchGameState = "instruction";
 let cbgImg, chillImg, covImg, cwoodImg;
 
 let positionStartSheep = Math.random()
 let score = 0
 
-const user = {
+const cUser = {
     x: undefined, // will be mouseX
     y: undefined, // will be mouseY
     size: 15,
@@ -24,14 +24,12 @@ function catchPreload() {
 }
 
 function catchSetup() {
-    background(0)
     prepareSheeps()
     catchPreload()
 }
 
 
 function catchDraw() {
-    // background(0)
     imageMode(CENTER, CENTER)
     console.log(cbgImg)
     image(cbgImg, 450, 350, 900, 700)
@@ -42,11 +40,12 @@ function catchDraw() {
     image(covImg, 450, 350, 900, 700)
 
 
+
     drawSheep()
-    drawUser()
-    moveUser()
+    drawCatchUser()
+    moveCatchUser()
     moveSheep()
-    checkScore()
+    catchScore()
 
     strokeWeight(8)
     stroke('white')
@@ -63,15 +62,15 @@ function catchKeyPressed(event) {
     }
 }
 
-function moveUser() {
-    user.x = mouseX;
-    user.y = mouseY;
+function moveCatchUser() {
+    cUser.x = mouseX;
+    cUser.y = mouseY;
 }
-function drawUser() {
+function drawCatchUser() {
     push();
     noStroke();
-    fill(user.fill);
-    ellipse(user.x, user.y, user.size);
+    fill(cUser.fill);
+    ellipse(cUser.x, cUser.y, cUser.size);
     pop();
 };
 
@@ -96,7 +95,7 @@ function drawSheep() {
     };
 }
 
-function checkScore() {
+function catchScore() {
     if (score === 8) {
         gameState = "menu"
     } else if (score === 7) {
@@ -108,17 +107,17 @@ function moveSheep() {
     for (let i = 0; i < sheeps.length; i++) {
         let sheep = sheeps[i];
         // Calcuate distance between mouse and sheep
-        const d = dist(user.x, user.y, sheep.x, sheep.y);
-        if (d < user.size * 2 + sheep.size) {
-            if (sheep.x > user.x) {
+        const d = dist(cUser.x, cUser.y, sheep.x, sheep.y);
+        if (d < cUser.size * 2 + sheep.size) {
+            if (sheep.x > cUser.x) {
                 sheep.x += 1
             }
-            if (sheep.x < user.x)
+            if (sheep.x < cUser.x)
                 sheep.x -= 1
-            if (sheep.y > user.y) {
+            if (sheep.y > cUser.y) {
                 sheep.y += 1
             }
-            if (sheep.y < user.y) {
+            if (sheep.y < cUser.y) {
                 sheep.y -= 1
             }
         }
