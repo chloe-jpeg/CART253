@@ -1,18 +1,17 @@
-# TITLE OF PROJECT
+# KEEPER OF SHEEP
 
-AUTHOR NAME
+Chloé Guérin
 
 [View this project online](URL_FOR_THE_RUNNING_PROJECT)
 
 ## Description
 
-This description should help the reader understand what the program is, anything they should know to be able to experience it (controls, special features, etc.), and what the desired user experience is. For example:
+The pastures are green, the sun is shining, life is good. But you know what would make it better? SHEEP! This game was made to give people an idea of what it would be like to catch, feed and protect sheep. Totally based on reality and guaranteed to give you basic skills in sheepkeeping or we give you all your money back! 
 
-> *The Mayor of Clown Town* is a simulator experience that allows the user to control a small town populated entirely by clowns.
+To maximize your learning, 3 mini-games are offered to you, the first one is to catch wild sheep, the second to feed and care for them, and the third to protect them from the wild beasts of the night. 
 
-> The experience is controlled via the mouse, with left click selecting a clown and bringing up a menu of options such as "slip of banana peel" or "get into impossible capacious clown-car."
-
-> The project is meant to give the user a sense of what it would be the mayor of a town of clowns, eventually getting the sense that clowns are not taking their civic duties seriously.
+The games are played using your mouse to herd or push away what is needed. If you manage all 3, it is strongly encouraged to abandon everything in your life and run to the hills where you can use your hard earned experience onto the real thing.
+*We are not responsible for possible maiming and general injuries that could come from the realities of this lifestyle.*
 
 ## Screenshot(s)
 

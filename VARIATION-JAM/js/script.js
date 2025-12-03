@@ -1,5 +1,15 @@
+/**
+ * Keeper of Sheep
+ * Chloé Guérin
+ * 
+ *3 games that follows the path of a young soon-to-be sheepkeeper. use keys to work the menu and mouse to catch, feed and protect your future flock.
+ * 
+ * Made with p5
+ * https://p5js.org/
+ */
 
 "use strict";
+
 
 let state = "menu";
 

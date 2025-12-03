@@ -1,8 +1,16 @@
-"use strict";
-// let gameState = "feed";
+/**
+ * second game, feed your sheep. food can be treacherous, use the mouse to push as many as possible in the sheep's mouth. make it quick or it'll starve to death! 
+ */
 
+"use strict";
+let feedGameState = "instruction";
+// const TIME = 5;
 let fbgImg, lambImg;
-// let score = 0
+let feedScore = 0
+
+let fTimerStarted = false;
+let fTimeLeft = 30;
+let fTimer;
 
 const fUser = {
     x: undefined, // will be mouseX
@@ -31,32 +39,46 @@ function feedPreload() {
 }
 
 function feedSetup() {
-    feedPreload()
+    feedGameState = 'instruction'
+    fTimerStarted = false;
+    feedScore = 0;
+    fTimeLeft = 30;
+    feedPreload();
+    // feedKeyTyped();
 
     food.x = random(0, width);
     food.y = random(0, height);
 }
 
 /**
- * This will be called every frame when the green variation is active
+ * 
 */
 function feedDraw() {
-    imageMode(CENTER, CENTER)
-    image(fbgImg, 450, 350, 900, 700)
+    if (feedGameState === "instruction") {
+        feedInstructionScreen();
+    }
+    else if (feedGameState === "play") {
+        imageMode(CENTER, CENTER)
+        image(fbgImg, 450, 350, 900, 700)
+        image(lambImg, 450, 370, 535, 451)
 
-    image(lambImg, 450, 370, 535, 451)
+        drawMouth();
+        drawFood();
+        moveFood();
+        drawFeedUser();
+        moveFeedUser();
+        feedScoredraw();
+        feedTimer();
+    }
 
-    // push()
-    // noStroke()
-    // fill('#282187ff')
-    // ellipse(310, 290, 100)
-    // pop()
+    else if (feedGameState === "gameOver") {
+        feedGameover();
+    }
 
-    drawMouth()
-    drawFood()
-    moveFood()
-    drawFeeduser()
-    moveFeeduser()
+    else if (feedGameState === "winning") {
+        feedWin();
+    }
+
 }
 
 /**
@@ -66,13 +88,67 @@ function feedKeyPressed(event) {
     if (event.keyCode === 27) {
         state = "menu";
     }
+    else if (event.keyCode === 32) {
+        feedGameState = "play";
+
+    }
 }
 
-function moveFeeduser() {
-    fUser.x = mouseX;
-    fUser.y = mouseY;
+// function feedKeyTyped() {
+//     if (keyCode === 32) {
+//         feedGameState = "play"
+//         // mySound.loop()
+//     }
+// }
+
+function feedCheckScore() {
+    if (feedScore >= 5) {
+        feedGameState = "winning"
+    } else if (feedScore <= 4) {
+        feedGameState = "gameOver"
+    }
 }
-function drawFeeduser() {
+
+function feedScoredraw() {
+    fill('#2e3766ff');
+    textAlign(RIGHT, TOP);
+    textFont("Courier New")
+    textSize(20);
+    stroke('#2e3766ff')
+    strokeWeight(1);
+    text(feedScore, 850, 30);
+}
+
+
+function feedTimer() {
+    push();
+    fill('#2e3766ff');
+    textAlign(LEFT, TOP);
+    textFont("Courier New")
+    textSize(20);
+    stroke('#2e3766ff')
+    strokeWeight(1);
+    text(fTimeLeft, 30, 30);
+    pop();
+
+    if (!fTimerStarted) {
+        fTimerStarted = true;
+
+        fTimer = setInterval(() => {
+            fTimeLeft--;
+
+            if (fTimeLeft <= 0) {
+                clearInterval(fTimer);
+                feedCheckScore();
+
+
+            }
+        }, 1000);
+    }
+}
+
+
+function drawFeedUser() {
     push();
     noStroke();
     fill(fUser.fill);
@@ -80,12 +156,17 @@ function drawFeeduser() {
     pop();
 };
 
+function moveFeedUser() {
+    fUser.x = mouseX;
+    fUser.y = mouseY;
+}
+
 
 function drawMouth() {
     push();
     noStroke();
     fill(mouth.fill);
-    ellipse(mouth.x, mouth.y, mouth.size,);
+    ellipse(mouth.x, mouth.y, mouth.size);
     const d = dist(mouth.x, mouth.y, food.x, food.y);
     pop();
 }
@@ -98,8 +179,7 @@ function drawFood() {
 
     let d = dist(food.x, food.y, mouth.x, mouth.y);
     if (d < (food.size / 2 + mouth.size / 2)) {
-        food.fill = food.fill
-        // score++;
+        feedScore = feedScore + 1
         food.x = random(0, width);
         food.y = random(0, height);
         d = dist(food.x, food.y, mouth.x, mouth.y);
@@ -111,7 +191,7 @@ function drawFood() {
 function moveFood() {
     // Calcuate distance between mouse and food
     const d = dist(fUser.x, fUser.y, food.x, food.y);
-    if (d < fUser.size / 2 + food.size / 2) {
+    if (d < fUser.size * 1 + food.size * 1) {
         if (food.x > fUser.x) {
             food.x += 3
         }
@@ -125,3 +205,123 @@ function moveFood() {
         }
     }
 };
+
+
+function feedInstructionScreen() {
+    background('#eae6cfff')
+
+    push()
+    rectMode(CENTER)
+    noStroke()
+    fill('#2e3766ff')
+    rect(450, 490, 380, 80, 50)
+    pop()
+
+    push()
+    rectMode(CENTER)
+    stroke('#2e3766ff')
+    strokeWeight(30)
+    noFill()
+    rect(450, 350, 900, 700, 30)
+    pop()
+
+
+    textAlign(CENTER)
+    textFont("Courier New")
+    textSize(20)
+    fill('#2e3766ff')
+    // noStroke()
+    textWrap(WORD)
+    stroke('#2e3766ff')
+    strokeWeight(1);
+    text('Look at how precious your animals are, now is the time to care for them! Feed the sheep, quickly! After all your hard work catching them, you would not let them starve, would you? Being a responsible sheep owner can sometimes be demanding, but I believe in you! Go get em champ!', 200, 160, 500)
+
+    // textAlign(CENTER)
+    textFont("Courier /new")
+    textSize(25)
+    fill('#eae6cfff')
+    noStroke()
+    // stroke('#4c8bc7ff')
+    // strokeWeight(1);
+    text('PRESS SPACEBAR TO PLAY', 450, 500)
+}
+
+
+function feedGameover() {
+    background('#eae6cfff')
+
+    push()
+    rectMode(CENTER)
+    noStroke()
+    fill('#2e3766ff')
+    rect(450, 490, 380, 80, 50)
+    pop()
+
+    push()
+    rectMode(CENTER)
+    stroke('#2e3766ff')
+    strokeWeight(30)
+    noFill()
+    rect(450, 350, 900, 700, 30)
+    pop()
+
+
+    textAlign(CENTER)
+    textFont("Courier New")
+    textSize(20)
+    fill('#2e3766ff')
+    // noStroke()
+    textWrap(WORD)
+    stroke('#2e3766ff')
+    strokeWeight(1);
+    text('YOUR SHEEP STARVED TO DEATH! Shame on you, irresponsible sheepkeeper. Go back, think on it and train to fix the error of your way…', 200, 250, 500)
+
+    // textAlign(CENTER)
+    textFont("Courier /new")
+    textSize(25)
+    fill('#eae6cfff')
+    noStroke()
+    // stroke('#4c8bc7ff')
+    // strokeWeight(1);
+    text('PRESS ESC TO GO BACK', 450, 480)
+}
+
+
+function feedWin() {
+    background('#eae6cfff')
+
+    push()
+    rectMode(CENTER)
+    noStroke()
+    fill('#2e3766ff')
+    rect(450, 490, 380, 80, 50)
+    pop()
+
+    push()
+    rectMode(CENTER)
+    stroke('#2e3766ff')
+    strokeWeight(30)
+    noFill()
+    rect(450, 350, 900, 700, 30)
+    pop()
+
+
+    textAlign(CENTER)
+    textFont("Courier New")
+    textSize(20)
+    fill('#2e3766ff')
+    // noStroke()
+    textWrap(WORD)
+    stroke('#2e3766ff')
+    strokeWeight(1);
+    text('I can only see happy, well-fed, fat and plump little sheep! Now that is how a good herd is supposed to look. But your job is not over, night is coming and your flock looks delicious. Go back to the menu, get your warrior spirit out and protect the ones that put their trust in you!', 200, 160, 500)
+
+    // textAlign(CENTER)
+    textFont("Courier /new")
+    textSize(25)
+    fill('#eae6cfff')
+    noStroke()
+    // stroke('#4c8bc7ff')
+    // strokeWeight(1);
+    text('PRESS ESC TO GO BACK', 450, 480)
+}
