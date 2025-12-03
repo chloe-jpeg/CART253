@@ -2,7 +2,7 @@
 
 Chloé Guérin
 
-[View this project online](URL_FOR_THE_RUNNING_PROJECT)
+[View this project online](https://chloe-jpeg.github.io/CART253/VARIATION-JAM/)
 
 ## Description
 
