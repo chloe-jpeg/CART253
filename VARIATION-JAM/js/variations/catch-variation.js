@@ -2,32 +2,44 @@
  * first mini-game, the catch variation. wild sheeps everywhere, they are skittish but with care  use the mouse to herd them in the fence.
  */
 "use strict";
-
+/**
+ * all my let
+ */
+//start state of the game
 let catchGameState = "instruction";
+//setup for image 
 let cbgImg, chillImg, covImg, cwoodImg;
-
-let positionStartSheep = Math.random()
+//info for random sheep
+let positionStartSheep = Math.random();
+//base info fro score and timer
 let catchScore = 0
 let cTimerStarted = false;
 let cTimeLeft = 30;
 let cTimer;
 
+/**
+ * all my const
+ */
+//info for the mousse circle
 const cUser = {
     x: undefined, // will be mouseX
     y: undefined, // will be mouseY
     size: 15,
     fill: "#000000"
 };
-
+//information in between the fence
 const line = {
     x: 450,
     y: 780,
     size: 200,
     fill: "#ffffffff"
 }
-
+// sheep tableau
 const sheeps = [];
 
+/**
+ * preload for my images
+ */
 function catchPreload() {
     cbgImg = loadImage('./assets/images/1_bg.png');
     chillImg = loadImage('./assets/images/1_hill.png');
@@ -35,6 +47,9 @@ function catchPreload() {
     cwoodImg = loadImage('./assets/images/1_cl.png')
 }
 
+/**
+ * setup with timer reload and functions call
+ */
 function catchSetup() {
     catchGameState = 'instruction'
     cTimerStarted = false;
@@ -44,7 +59,9 @@ function catchSetup() {
     catchPreload()
 }
 
-
+/**
+ * all my game state, most of where the functions are called, bg image
+ */
 function catchDraw() {
     if (catchGameState === "instruction") {
         catchInstructionScreen();
@@ -79,16 +96,25 @@ function catchDraw() {
 
 }
 
+/**
+ * key press!
+ */
 function catchKeyPressed(event) {
+    //to go back to the menu (is not working well yet??)
     if (event.keyCode === 27) {
         state = "menu";
     }
+    //to go from instruction to play
     else if (event.keyCode === 32) {
         catchGameState = "play";
 
     }
 }
 
+/**
+ * all the score functions
+ */
+//check the score to know if its a winner or loser 
 function catchCheckScore() {
     if (catchScore >= 8) {
         catchGameState = "winning"
@@ -96,7 +122,7 @@ function catchCheckScore() {
         catchGameState = "gameOver"
     }
 }
-
+//make the score visible on the edge of the screen
 function catchScoredraw() {
     fill('#2e3766ff');
     textAlign(RIGHT, TOP);
@@ -107,7 +133,11 @@ function catchScoredraw() {
     text(catchScore, 850, 30);
 }
 
+/**
+ * all the timer function, adds a bit of stress to the gathering of sheep
+ */
 function catchTimer() {
+    //make the time visible on the edge of the screen
     push();
     fill('#2e3766ff');
     textAlign(LEFT, TOP);
@@ -117,7 +147,7 @@ function catchTimer() {
     strokeWeight(1);
     text(cTimeLeft, 30, 30);
     pop();
-
+    //make the time tick down and check with the score to know the gamestate 
     if (!cTimerStarted) {
         cTimerStarted = true;
 
@@ -134,6 +164,10 @@ function catchTimer() {
     }
 }
 
+/**
+ * all the user functions
+ */
+//draw the black mousse circle
 function drawCatchUser() {
     push();
     noStroke();
@@ -141,12 +175,13 @@ function drawCatchUser() {
     ellipse(cUser.x, cUser.y, cUser.size);
     pop();
 };
-
+//connets to the mousse
 function moveCatchUser() {
     cUser.x = mouseX;
     cUser.y = mouseY;
 }
 
+//between the fence to get points
 function drawLine() {
     push();
     noStroke();
@@ -155,6 +190,10 @@ function drawLine() {
     pop();
 }
 
+/**
+ * all the sheep functions
+ */
+//create sheep and connects to the score
 function drawSheep() {
     for (let i = 0; i < sheeps.length; i++) {
         let sheep = sheeps[i];
@@ -178,25 +217,13 @@ function drawSheep() {
         else {
             sheep.cpointperdu = false
         }
-
-        // let d = dist(sheep.x, sheep.y, line.x, line.y);
-        // if (d < (sheep.size / 2 + line.size / 2))
-        //     catchScore = catchScore + 1
-        // else {
-        //     // ne s<affiche pas
-        //     if (sheep.x < 550 && sheep.x > 350 && sheep.y < 700 && sheep.y > 700) {
-        //         score = score + 1;
-        //     }
-        // }
-
     };
 }
 
-
+// Calcuate distance between mouse and sheep, make sure they move
 function moveSheep() {
     for (let i = 0; i < sheeps.length; i++) {
         let sheep = sheeps[i];
-        // Calcuate distance between mouse and sheep
         const d = dist(cUser.x, cUser.y, sheep.x, sheep.y);
         if (d < cUser.size * 2 + sheep.size) {
             if (sheep.x > cUser.x) {
@@ -214,6 +241,7 @@ function moveSheep() {
     }
 };
 
+//make the sheep appear randomly and base of the point system 
 function prepareSheeps() {
     for (let i = 0; i < 15; i++) {
         let sheep = {
@@ -228,6 +256,10 @@ function prepareSheeps() {
     }
 
 }
+
+/**
+ * Other gameStates, colours and text
+ */
 
 function catchInstructionScreen() {
     background('#eae6cfff')
@@ -268,7 +300,7 @@ function catchInstructionScreen() {
     text('PRESS SPACEBAR TO PLAY', 450, 500)
 }
 
-
+//game over screen, draw and text 
 function catchGameover() {
     background('#eae6cfff')
 
@@ -308,7 +340,7 @@ function catchGameover() {
     text('PRESS ESC TO GO BACK', 450, 480)
 }
 
-
+//Winner screen, draw and text 
 function catchWin() {
     background('#eae6cfff')
 

@@ -17,18 +17,20 @@ The games are played using your mouse to herd or push away what is needed. If yo
 
 This bit should have some images of the program running so that the reader has a sense of what it looks like. For example:
 
-> ![Image of a clown face](./assets/images/clown.png)
+> ![Image of the menu](./assets/images/menu_sc.png)
+> ![Image of the catch game](./assets/images/catch_sc.png)
+> ![Image of the feed game](./assets/images/feed_sc.png)
+> ![Image of the protect game](./assets/images/protect_sc.png)
 
 ## Attribution
 
 This bit should attribute any code, assets or other elements used taken from other sources. For example:
 
 > - This project uses [p5.js](https://p5js.org).
-> - The clown image is a capture of the clown from the Apple emoji character set.
-> - The barking sound effect is "single dog bark 1" by crazymonke9 from freesound.org: https://freesound.org/people/crazymonke9/sounds/418107/
+> - This project also uses [W2school](https://www.w3schools.com/)
+> - Backgrounds and assets made by me using procreate
+> - Like always, special thanks to my Dad for your help on the score issue, I'll buy you a big KitKat
+> - And thank you Pippin for the menu template & classmates for the menu help!
 
 ## License
-
-This bit should include the license you want to apply to your work. For example:
-
 > This project is licensed under a Creative Commons Attribution ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.en)) license with the exception of libraries and other components with their own licenses.

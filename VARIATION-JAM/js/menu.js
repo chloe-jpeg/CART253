@@ -3,14 +3,14 @@
  * illustration and the variation keys
  */
 "use strict";
-
+//the text for the menu
 const menuText = `
 (C) Catch
 (F) Feed
 (P) Protect`
 
-let shepherdImg;
-
+let shepherdImg;//bg image
+//and the load for it
 function preload() {
     shepherdImg = loadImage('./assets/images/sheepkeeper.png')
 }
@@ -70,6 +70,7 @@ function menuDraw() {
 
 }
 
+//key press to make sure the menu is connected to the games
 function menuKeyPressed(event) {
     switch (event.keyCode) {
         case 67:

@@ -3,29 +3,37 @@
  */
 
 "use strict";
+/**
+ * all my let
+ */
+//start state of the game
 let feedGameState = "instruction";
-// const TIME = 5;
+//setup for image 
 let fbgImg, lambImg;
+//base info fro score and timer
 let feedScore = 0
-
 let fTimerStarted = false;
 let fTimeLeft = 30;
 let fTimer;
 
+/**
+ * all my const
+ */
+//info for the mousse circle
 const fUser = {
     x: undefined, // will be mouseX
     y: undefined, // will be mouseY
     size: 15,
     fill: "#000000"
 };
-
+//information in behind the sheep head
 const mouth = {
     x: 310,
     y: 290,
     size: 100,
     fill: 'rgba(255, 255, 255, 0)',
 }
-
+//information for the food circle (carrot)
 const food = {
     x: undefined,
     y: undefined,
@@ -33,25 +41,30 @@ const food = {
     fill: "#e56407ff"
 };
 
+/**
+ * preload for my images
+ */
 function feedPreload() {
     fbgImg = loadImage('./assets/images/2_bg.png')
     lambImg = loadImage('./assets/images/2_lamb.png');
 }
 
+/**
+ * setup with timer reload and functions call
+ */
 function feedSetup() {
     feedGameState = 'instruction'
     fTimerStarted = false;
     feedScore = 0;
     fTimeLeft = 30;
     feedPreload();
-    // feedKeyTyped();
-
+    //making the food appear everywhere in the canvas
     food.x = random(0, width);
     food.y = random(0, height);
 }
 
 /**
- * 
+ * all my game state, most of where the functions are called, bg image
 */
 function feedDraw() {
     if (feedGameState === "instruction") {
@@ -82,12 +95,14 @@ function feedDraw() {
 }
 
 /**
- * This will be called whenever a key is pressed while the green variation is active
+ * key press!
  */
 function feedKeyPressed(event) {
+    //to go back to the menu (is not working well yet??)
     if (event.keyCode === 27) {
         state = "menu";
     }
+    //to go from instruction to play
     else if (event.keyCode === 32) {
         feedGameState = "play";
 
@@ -101,6 +116,10 @@ function feedKeyPressed(event) {
 //     }
 // }
 
+/**
+ * all the score functions
+ */
+//check the score to know if its a winner or loser 
 function feedCheckScore() {
     if (feedScore >= 5) {
         feedGameState = "winning"
@@ -108,7 +127,7 @@ function feedCheckScore() {
         feedGameState = "gameOver"
     }
 }
-
+//make the score visible on the edge of the screen
 function feedScoredraw() {
     fill('#2e3766ff');
     textAlign(RIGHT, TOP);
@@ -119,8 +138,11 @@ function feedScoredraw() {
     text(feedScore, 850, 30);
 }
 
-
+/**
+ * all the timer function, makes the feeding stressful (good)
+ */
 function feedTimer() {
+    //make the time visible on the edge of the screen
     push();
     fill('#2e3766ff');
     textAlign(LEFT, TOP);
@@ -130,7 +152,7 @@ function feedTimer() {
     strokeWeight(1);
     text(fTimeLeft, 30, 30);
     pop();
-
+    //make the time tick down and check with the score to know the gamestate 
     if (!fTimerStarted) {
         fTimerStarted = true;
 
@@ -147,7 +169,10 @@ function feedTimer() {
     }
 }
 
-
+/**
+ * all the user functions
+ */
+//draw the black mousse circle
 function drawFeedUser() {
     push();
     noStroke();
@@ -155,13 +180,13 @@ function drawFeedUser() {
     ellipse(fUser.x, fUser.y, fUser.size);
     pop();
 };
-
+//connets to the mousse
 function moveFeedUser() {
     fUser.x = mouseX;
     fUser.y = mouseY;
 }
 
-
+//create mouth and connects to the food
 function drawMouth() {
     push();
     noStroke();
@@ -171,6 +196,10 @@ function drawMouth() {
     pop();
 }
 
+/**
+ * all the food functions
+ */
+//create food and connects to the score
 function drawFood() {
     push();
     noStroke();
@@ -188,8 +217,8 @@ function drawFood() {
 };
 
 
+// Calcuate distance between mouse and food
 function moveFood() {
-    // Calcuate distance between mouse and food
     const d = dist(fUser.x, fUser.y, food.x, food.y);
     if (d < fUser.size * 1 + food.size * 1) {
         if (food.x > fUser.x) {
@@ -206,6 +235,9 @@ function moveFood() {
     }
 };
 
+/**
+ * Other gameStates, colours and text
+ */
 
 function feedInstructionScreen() {
     background('#eae6cfff')
@@ -246,7 +278,7 @@ function feedInstructionScreen() {
     text('PRESS SPACEBAR TO PLAY', 450, 500)
 }
 
-
+//game over screen, draw and text 
 function feedGameover() {
     background('#eae6cfff')
 
@@ -286,7 +318,7 @@ function feedGameover() {
     text('PRESS ESC TO GO BACK', 450, 480)
 }
 
-
+//Winner screen, draw and text 
 function feedWin() {
     background('#eae6cfff')
 
