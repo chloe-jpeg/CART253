@@ -10,16 +10,15 @@
 
 "use strict";
 
-
+//original state when you open the game
 let state = "menu";
 
-
+//and the canvas, size of the whole thing
 function setup() {
     createCanvas(900, 700)
 }
 
-
-
+//connects the menu draw to the games draw
 function draw() {
     switch (state) {
         case "menu":
@@ -37,7 +36,7 @@ function draw() {
     }
 }
 
-
+//connects the menu key press to the games key press
 function keyPressed(event) {
     switch (state) {
         case "menu":
@@ -54,7 +53,7 @@ function keyPressed(event) {
             break;
     }
 }
-
+//creates the comeback from the game to the menu (is that what's goign wrong??)
 function KeyPressed(event) {
     if (event.keyCode === 27) {
         state = "menu";
